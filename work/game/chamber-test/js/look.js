@@ -101,7 +101,7 @@ export class Look {
     this.gbuf = new THREE.WebGLRenderTarget(1, 1, { depthTexture: dt, depthBuffer: true, type: THREE.HalfFloatType });
     this.composer = new EffectComposer(renderer);
     this.renderPass = new RenderPass(new THREE.Scene(), new THREE.PerspectiveCamera());
-    this.bloom = new UnrealBloomPass(new THREE.Vector2(512, 512), 0.5, 0.55, 0.78);
+    this.bloom = new UnrealBloomPass(new THREE.Vector2(512, 512), 0.38, 0.5, 0.86);
     this.output = new OutputPass();
     this.ink = new ShaderPass(Ink);
     this.ink.uniforms.tDepth.value = dt;
@@ -115,6 +115,7 @@ export class Look {
   }
   render(scene, camera, t, hidden = []) {
     // normals + depth for the outlines (transparent things like water and light are left out)
+    const was = hidden.map((o) => o.visible); // restore each object's own visibility afterwards
     hidden.forEach((o) => (o.visible = false));
     const bg = scene.background, fog = scene.fog;
     scene.background = null; scene.fog = null;
@@ -124,7 +125,7 @@ export class Look {
     this.renderer.render(scene, camera);
     this.renderer.setRenderTarget(null);
     scene.overrideMaterial = null; scene.background = bg; scene.fog = fog;
-    hidden.forEach((o) => (o.visible = true));
+    hidden.forEach((o, i) => (o.visible = was[i]));
     this.ink.uniforms.uNear.value = camera.near; this.ink.uniforms.uFar.value = camera.far;
     this.ink.uniforms.uTime.value = t;
     this.renderPass.scene = scene; this.renderPass.camera = camera;

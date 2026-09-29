@@ -81,7 +81,7 @@ export function makeWater({ deep, refl, toon = 0, opacity = 0.82, scale = 3.0 })
         vec3 D = uDoorPos - vW; float dd = length(D); D /= dd;
         float sd = pow(max(dot(N, normalize(D + V)), 0.0), 60.0) * uDoorPow / (1.0 + dd * dd * 0.08);
         float ss = pow(max(dot(N, normalize(uSunDir + V)), 0.0), 120.0) * uSunPow;
-        if (uToon > 0.5) { sl = step(0.35, sl) * 1.2; sd = step(0.3, sd) * 1.4; ss = step(0.4, ss) * 1.5; }
+        if (uToon > 0.5) { sl = smoothstep(0.3, 0.6, sl) * 0.45; sd = smoothstep(0.25, 0.55, sd) * 0.9; ss = smoothstep(0.35, 0.6, ss) * 1.2; }
         col += uLampCol * sl * 2.0 + uDoorCol * sd * 2.0 + vec3(1.0, 0.95, 0.85) * ss * 2.0;
         // the door's light washes across the water surface near it
         col += uDoorCol * uDoorPow * 0.05 / (1.0 + dd * dd * 0.4);

@@ -31,6 +31,19 @@ async function loadModel(name) {
   const bin = Uint8Array.from(atob(txt.trim()), (c) => c.charCodeAt(0));
   return loader.parseAsync(bin.buffer, '');
 }
+// Tripo bakes forward travel into the hip track of its walk. Our code moves the character,
+// so keep the hips in place (keep the up-down bob, drop the forward and sideways travel).
+function stripRootMotion(clip) {
+  for (const tr of clip.tracks) {
+    if (!/(^|\.)(Hip|Root)\.position$/.test(tr.name) && !/^(Hip|Root)\.position$/.test(tr.name)) continue;
+    const v = tr.values;
+    for (let i = 0; i < v.length; i += 3) { v[i] = v[0]; v[i + 1] = v[1] + (v[i + 1] - v[1]) * 0; }
+    // the travel axis in Tripo rigs is local Y (Blender forward); the height is local Z
+    for (let i = 0; i < v.length; i += 3) v[i + 1] = v[1];
+  }
+  return clip;
+}
+
 // Scale a model to a height, stand it on the ground, centre it.
 function fit(obj, height) {
   const box = new THREE.Box3().setFromObject(obj);
@@ -55,7 +68,12 @@ const doorMat = new THREE.ShaderMaterial({
       vec2 uv = vUv; float t = uTime;
       // dormant: black that does not reflect the lamp, with a slow oily sheen crawling over it
       float sheen = n(uv * vec2(3., 5.) + vec2(t * 0.05, -t * 0.08)) * n(uv * 11. - t * 0.1);
-      vec3 col = vec3(0.004, 0.005, 0.008) + vec3(0.05, 0.07, 0.1) * smoothstep(0.55, 0.9, sheen) * 0.7;
+      vec3 col = vec3(0.006, 0.007, 0.012) + vec3(0.05, 0.065, 0.095) * smoothstep(0.55, 0.9, sheen);
+      // a slow vertical ripple, as if the surface were dark water standing upright
+      col += vec3(0.02, 0.025, 0.04) * smoothstep(0.82, 1.0, sin(uv.y * 18.0 - t * 1.1 + n(uv * 3.0) * 4.0));
+      // faint cold rim where the black meets the frame
+      float edge = min(min(uv.x, 1.0 - uv.x) * 2.2, min(uv.y, 1.0 - uv.y) * 1.6);
+      col += vec3(0.25, 0.35, 0.5) * (1.0 - smoothstep(0.0, 0.08, edge)) * 0.35;
       float d = abs(uv.y - uFace);
       float hw = uOpen * 0.8;
       float mask = (1.0 - smoothstep(hw - 0.02, hw + 0.015, d)) * smoothstep(0.0, 0.03, uv.x) * smoothstep(1.0, 0.97, uv.x);
@@ -65,7 +83,7 @@ const doorMat = new THREE.ShaderMaterial({
       } else if (uState > 1.5) {
         float corridor = 1.0 - pow(abs(uv.x - 0.5) * 1.9, 2.0);
         float walls = n(uv * vec2(4., 7.) + t * 0.2);
-        vec3 live = mix(vec3(0.7, 0.8, 0.92), vec3(1.05, 1.05, 1.0), walls) * (0.6 + 0.8 * corridor) * 1.8;
+        vec3 live = mix(vec3(0.62, 0.72, 0.86), vec3(0.95, 0.97, 1.0), walls) * (0.5 + 0.7 * corridor) * 1.35;
         col = mix(col, live, mask);
       }
       float line = exp(-d * d / (0.00012 + uOpen * uOpen * 0.002)) * step(0.001, uOpen) * step(0.5, uState);
@@ -194,8 +212,9 @@ async function loadProps() {
   const pb = new THREE.Box3().setFromObject(portal).getSize(new THREE.Vector3());
   if (pb.z > pb.x) portal.rotation.y = Math.PI / 2;
   const pg = fit(portal, DOOR.h * 1.42);
-  pg.scale.x *= 1.05;
-  pg.position.set(0, DOOR.y0 - 0.02, DOOR.z - 0.12);
+  pg.scale.x *= 1.08;
+  const pgb = new THREE.Box3().setFromObject(pg);
+  pg.position.set(0, DOOR.y0 - 0.02, DOOR.z + 0.95 - pgb.max.z); // frame stands proud of the stone reveal
   scene.add(pg);
 }
 
@@ -214,7 +233,7 @@ async function loadTobious() {
   scene.remove(stand); scene.add(g); tobi = g;
   if (gltf.animations.length) {
     tobiMix = new THREE.AnimationMixer(model);
-    for (const c of gltf.animations) tobiAct[c.name] = tobiMix.clipAction(c);
+    for (const c of gltf.animations) tobiAct[c.name] = tobiMix.clipAction(stripRootMotion(c));
     (tobiAct.idle || Object.values(tobiAct)[0]).play();
   }
   // the future self in the echo: same man, darker clothes, blood at the right ribs
@@ -261,13 +280,13 @@ async function loadIwang() {
   g.visible = false; scene.add(g);
   iw.root = g; iw.model = model;
   iw.mix = new THREE.AnimationMixer(model);
-  for (const c of gltf.animations) iw.act[c.name] = iw.mix.clipAction(c);
+  for (const c of gltf.animations) iw.act[c.name] = iw.mix.clipAction(stripRootMotion(c));
   iw.act.idle && iw.act.idle.play();
 }
 
 // ---------- the sequence ----------
 const ECHO_SECONDS = 41;
-const clampPos = new THREE.Vector3(DOOR.w / 2 - 0.1, SUNK.y, DOOR.z + 0.8);
+const clampPos = new THREE.Vector3(DOOR.w / 2 - 0.2, SUNK.y, DOOR.z + 1.3);
 const S = { state: 'dormant', t: 0, open: 0, draft: 0, cut: 0, sub: null, cardShown: false };
 function setState(s) { S.state = s; S.t = 0; }
 function resetScene() {
@@ -331,6 +350,11 @@ function updateCamera(dt) {
 
 // ---------- input ----------
 const keys = new Set();
+function interactKey(k) {
+  if (k === 'e') interact();
+  if (k === ' ' && S.state === 'live') setState('closing');
+  if (k === 'enter' && S.state === 'echo') S.t = ECHO_SECONDS;
+}
 addEventListener('keydown', (e) => {
   const k = e.key.toLowerCase(); keys.add(k);
   if (cam.intro < INTRO[2][0] && (k.length === 1 || k === 'enter' || k === ' ')) cam.intro = INTRO[2][0];
@@ -346,9 +370,21 @@ addEventListener('keydown', (e) => {
 addEventListener('keyup', (e) => keys.delete(e.key.toLowerCase()));
 addEventListener('blur', () => keys.clear());
 let drag = null;
-renderer.domElement.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY }; renderer.domElement.setPointerCapture(e.pointerId); if (cam.intro < INTRO[2][0]) cam.intro = INTRO[2][0]; });
-renderer.domElement.addEventListener('pointermove', (e) => { if (!drag) return; cam.yaw -= (e.clientX - drag.x) * 0.006; cam.pitch = THREE.MathUtils.clamp(cam.pitch + (e.clientY - drag.y) * 0.004, 0.05, 1.0); drag = { x: e.clientX, y: e.clientY }; });
-renderer.domElement.addEventListener('pointerup', () => (drag = null));
+// Mouse look: click to lock the pointer (Esc releases it), or hold and drag.
+function turn(dx, dy) { cam.yaw -= dx * 0.0035; cam.pitch = THREE.MathUtils.clamp(cam.pitch + dy * 0.0028, 0.05, 1.0); }
+renderer.domElement.addEventListener('pointerdown', (e) => {
+  if (cam.intro < INTRO[2][0]) cam.intro = INTRO[2][0];
+  if (document.pointerLockElement !== renderer.domElement && renderer.domElement.requestPointerLock) {
+    try { const pr = renderer.domElement.requestPointerLock(); if (pr && pr.catch) pr.catch(() => {}); } catch (err) { /* not available: drag instead */ }
+  }
+  drag = { x: e.clientX, y: e.clientY };
+});
+addEventListener('pointermove', (e) => {
+  if (document.pointerLockElement === renderer.domElement) { turn(e.movementX, e.movementY); return; }
+  if (!drag) return; turn(e.clientX - drag.x, e.clientY - drag.y); drag = { x: e.clientX, y: e.clientY };
+});
+addEventListener('pointerup', () => (drag = null));
+
 
 function interact() {
   if (S.state === 'dormant' && player.pos.distanceTo(clampPos) < 1.2) { setState('echo'); echoReset(); hint(null); }
@@ -369,17 +405,24 @@ function rewind() {
 
 // ---------- per-frame ----------
 const tmp = new THREE.Vector3();
+let moveBasis = null;
 function update(dt, t) {
   S.t += dt;
   // movement, relative to the camera
   let f = 0, s = 0;
   if (keys.has('w') || keys.has('arrowup')) f += 1;
   if (keys.has('s') || keys.has('arrowdown')) f -= 1;
-  if (keys.has('a') || keys.has('arrowleft')) s -= 1;
-  if (keys.has('d') || keys.has('arrowright')) s += 1;
+  if (keys.has('a')) s -= 1;
+  if (keys.has('d')) s += 1;
+  // left and right arrows turn the camera while held
+  if (cam.mode === 'follow') { if (keys.has('arrowleft')) cam.yaw += dt * 1.9; if (keys.has('arrowright')) cam.yaw -= dt * 1.9; }
   let speed = 0;
+  if (!(f || s)) moveBasis = null; // fixed cameras: keep the direction until the keys are released
   if ((f || s) && cam.intro >= INTRO[2][0]) {
-    const fw = new THREE.Vector3(); camera.getWorldDirection(fw); fw.y = 0; fw.normalize();
+    // follow camera: steer by the camera's intended angle, so the camera catching up can't bend the path
+    const fw = new THREE.Vector3();
+    if (cam.mode === 'follow') fw.set(Math.sin(cam.yaw), 0, Math.cos(cam.yaw));
+    else { if (!moveBasis) { camera.getWorldDirection(fw); fw.y = 0; fw.normalize(); moveBasis = fw.clone(); } fw.copy(moveBasis); }
     const rt = new THREE.Vector3(-fw.z, 0, fw.x);
     const dir = fw.multiplyScalar(f).addScaledVector(rt, s).normalize();
     speed = keys.has('shift') ? 2.8 : 1.6;
@@ -390,7 +433,6 @@ function update(dt, t) {
     else speed = 0;
     const want = Math.atan2(dir.x, dir.z);
     player.yaw += Math.atan2(Math.sin(want - player.yaw), Math.cos(want - player.yaw)) * Math.min(1, dt * 10);
-    if (cam.mode === 'follow' && !drag) cam.yaw += Math.atan2(Math.sin(player.yaw - cam.yaw), Math.cos(player.yaw - cam.yaw)) * Math.min(1, dt * 1.3);
   }
   player.pos.y += (heightAt(player.pos.x, player.pos.z) - player.pos.y) * Math.min(1, dt * 14);
   const body = tobi || stand;
@@ -427,10 +469,10 @@ function update(dt, t) {
   doorU.uOpen.value = S.open; doorU.uTime.value = t;
   const live = (st === 'live' || st === 'closing') ? S.open : 0;
   S.draft += (live - S.draft) * Math.min(1, dt * 1.5);
-  W.doorLight.intensity = st === 'echo' ? S.open * 6 : live * 55;
+  W.doorLight.intensity = st === 'echo' ? S.open * 5 : live * 26;
 
   // lamps flicker; flames lean toward the door as the air moves
-  W.lamps.forEach((l, i) => { const fl = 0.85 + 0.09 * Math.sin(t * 11 + i * 2) + 0.06 * Math.sin(t * 23 + i) ; l.intensity = (i < 2 ? 7 : 5) * fl; });
+  W.lamps.forEach((l, i) => { const fl = 0.94 + 0.035 * Math.sin(t * 3.1 + i * 2) + 0.025 * Math.sin(t * 7.3 + i); l.intensity = (i < 2 ? 7 : 5) * fl; });
   flameU.uTime.value = t;
   flameU.uLean.value.set(0, 0, -1).multiplyScalar((st === 'echo' ? S.open * 0.8 : 0) + S.draft * 1.5);
 
@@ -506,7 +548,7 @@ function updateIwang(dt, t) {
   // face the person, or the door when leaving
   const face = iw.mode === 'retreat' ? Math.PI : Math.atan2(player.pos.x - p.x, player.pos.z - p.z);
   iw.yaw += Math.atan2(Math.sin(face - iw.yaw), Math.cos(face - iw.yaw)) * Math.min(1, dt * 2.5);
-  p.y = p.z < DOOR.z ? SUNK.y : heightAt(p.x, p.z);
+  p.y = p.z < DOOR.z + 1.2 ? DOOR.y0 : heightAt(p.x, p.z); // on the step at the door's foot, else the floor
   // it is solid near the live seam and turns to smoke away from it
   const target = p.z < DOOR.z ? 1 : Math.min(1, gradientAt(p) * 1.35);
   iw.coh += (target - iw.coh) * Math.min(1, dt * 2.5);
@@ -532,12 +574,13 @@ addEventListener('resize', resize);
 resize();
 const clock = new THREE.Clock();
 let t = 0;
+let paused = false;
 const hideFromInk = [dust, W.shaft, W.waterMain, W.waterSunk, W.sky];
+function tick(dt) { t += dt; update(dt, t); updateCamera(dt); }
 function frame() {
-  const dt = Math.min(0.05, clock.getDelta()); t += dt;
-  update(dt, t);
-  updateCamera(dt);
-  look.render(scene, camera, t, [...hideFromInk, ...flames]);
+  const dt = Math.min(0.05, clock.getDelta());
+  if (!paused) tick(dt);
+  look.render(scene, camera, t, [...hideFromInk, ...flames, ...(iw.root ? [iw.root] : []), door]);
   requestAnimationFrame(frame);
 }
 
@@ -550,4 +593,8 @@ Promise.all([loadProps(), loadTobious(), loadIwang()]).then(() => {
 setTimeout(() => $('title').classList.add('on'), 600);
 setTimeout(() => $('title').classList.remove('on'), 6800);
 
-window.__ct = { S, player, cam, iw, get tobi() { return tobi; }, THREE, W, setState, resetScene, go(x, z, yaw) { player.pos.set(x, heightAt(x, z), z); if (yaw !== undefined) player.yaw = yaw; cam.yaw = player.yaw; }, interact, skipIntro() { cam.intro = 99; } };
+window.__ct = {
+  // run the game at a fixed 60 fps for n frames with these keys held, without drawing
+  sim(n, held = []) { paused = true; const prev = new Set(keys); keys.clear(); held.forEach((k) => keys.add(k)); const out = []; for (let i = 0; i < n; i++) { tick(1 / 60); if (i % 15 === 14) out.push([+player.pos.x.toFixed(2), +player.pos.z.toFixed(2), +player.yaw.toFixed(2), tobiCur]); } keys.clear(); prev.forEach((k) => keys.add(k)); paused = false; return out; },
+  press(k) { interactKey(k); },
+  S, player, cam, iw, camera, tobiState: () => tobiCur, get tobi() { return tobi; }, THREE, W, setState, resetScene, go(x, z, yaw) { player.pos.set(x, heightAt(x, z), z); if (yaw !== undefined) player.yaw = yaw; cam.yaw = player.yaw; }, interact, skipIntro() { cam.intro = 99; } };

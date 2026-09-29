@@ -9,7 +9,7 @@ import { rng } from './tex.js';
 
 export const R = 7.0;                                  // chamber radius
 export const SUNK = { x: 2.3, z0: -6.3, z1: -3.1, y: -0.9 };   // sunken area before the door
-export const DOOR = { z: -6.25, y0: -0.9, w: 1.9, h: 2.7 };     // the black surface
+export const DOOR = { z: -6.25, y0: -0.72, w: 2.0, h: 2.9 };    // the black surface, standing on its stone step
 export const STAIR = { x: 1.05, z0: 6.7, z1: 11.2, rise: 3.2 };  // stair up to daylight
 const STONE = [0xb9ab93, 0xa89a82, 0xc4b69c, 0x9c8f79, 0xb3a58c];
 const r = rng(7);
@@ -31,7 +31,7 @@ export function heightAt(x, z) {
 export function canStand(x, z, fromY) {
   const inStair = Math.abs(x) < STAIR.x - 0.3 && z > R - 1.2 && z < STAIR.z1;
   if (!inStair && Math.hypot(x, z) > R - 0.6) return false;
-  if (Math.abs(x) < SUNK.x && z < SUNK.z1 && z > SUNK.z0) { if (Math.abs(x) > SUNK.x - 0.35 || z < DOOR.z + 0.55) return false; }
+  if (Math.abs(x) < SUNK.x && z < SUNK.z1 && z > SUNK.z0) { if (Math.abs(x) > SUNK.x - 0.35 || z < DOOR.z + 1.2) return false; }
   if (Math.abs(heightAt(x, z) - fromY) > 0.32) return false;
   for (const o of OBSTACLES) if (Math.hypot(x - o[0], z - o[1]) < o[2]) return false;
   return true;
@@ -81,7 +81,15 @@ export function buildWorld(scene) {
       z += len;
     }
   }
+  // the doorway's depth: stone sides and a lintel stone set back into the wall, and a step at its foot
+  const rev = [];
+  for (const sx of [-1, 1]) for (let yy = DOOR.y0; yy < DOOR.y0 + DOOR.h; ) { const h = 0.5 + r() * 0.3; rev.push({ x: sx * (DOOR.w / 2 + 0.22), y: yy + h / 2, z: DOOR.z + 0.2, sx: 0.44, sy: h - 0.03, sz: 0.5, ry: 0, tilt: 0 }); yy += h; }
+  rev.push({ x: 0, y: DOOR.y0 + DOOR.h + 0.2, z: DOOR.z + 0.2, sx: DOOR.w + 0.9, sy: 0.42, sz: 0.5, ry: 0, tilt: 0 });
+  rev.push({ x: 0, y: DOOR.y0 - 0.18, z: DOOR.z + 0.55, sx: DOOR.w + 1.0, sy: 0.36, sz: 1.3, ry: 0, tilt: 0 }); // the step: its top is the door's sill
+  wallBlocks.push(...rev);
   W.walls = instBlocks(geo, wallBlocks, STONE, scene);
+  // dried mud still crusted along the foot of the black surface (Chapter 1)
+  const mud = new THREE.Mesh(new THREE.BoxGeometry(DOOR.w, 0.22, 0.08), toon(0x4a3524)); mud.position.set(0, DOOR.y0 + 0.1, DOOR.z + 0.04); scene.add(mud);
 
   // ---------- floor: flagstones under ankle-deep water ----------
   const flags = [];
@@ -104,7 +112,14 @@ export function buildWorld(scene) {
     flags.push({ x: 0, y: top - 0.35, z, sx: STAIR.x * 2, sy: 0.7, sz: 0.36, ry: 0, tilt: (r() - 0.5) * 0.02 });
   }
   W.floor = instBlocks(geo, flags, [0x9b8e78, 0x8e826d, 0xa69880, 0x857a66], scene, false);
-  const under = new THREE.Mesh(new THREE.CircleGeometry(R + 0.5, 48).rotateX(-Math.PI / 2), toon(0x2b231b)); under.position.y = -0.22; scene.add(under);
+  // Floor outline with a hole over the sunken area. The hole must sit fully inside the outline,
+  // or the triangulation silently drops it; the outline runs under the wall, so R + 0.6 is safe.
+  const floorShape = () => {
+    const sh = new THREE.Shape(); sh.absarc(0, 0, R + 0.6, 0, Math.PI * 2, false);
+    const hole = new THREE.Path(); hole.moveTo(-SUNK.x, -SUNK.z1); hole.lineTo(-SUNK.x, -SUNK.z0); hole.lineTo(SUNK.x, -SUNK.z0); hole.lineTo(SUNK.x, -SUNK.z1); hole.closePath();
+    sh.holes.push(hole); return sh;
+  };
+  const under = new THREE.Mesh(new THREE.ShapeGeometry(floorShape(), 48).rotateX(-Math.PI / 2), toon(0x2b231b)); under.position.y = -0.22; scene.add(under);
   const under2 = new THREE.Mesh(new THREE.PlaneGeometry(SUNK.x * 2 + 1, 4).rotateX(-Math.PI / 2), toon(0x2b231b)); under2.position.set(0, SUNK.y - 0.22, (SUNK.z0 + SUNK.z1) / 2); scene.add(under2);
 
   // ---------- ceiling: a low dome of dark stone with roots hanging from the joints ----------
@@ -117,11 +132,7 @@ export function buildWorld(scene) {
 
   // ---------- water ----------
   const water = makeWater({ deep: 0x1d2b2c, refl: 0x587071, toon: 1, opacity: 0.72, scale: 2.2 });
-  const shape = new THREE.Shape(); shape.absarc(0, 0, R - 0.3, 0, Math.PI * 2, false);
-  // holes must wind clockwise against the counter-clockwise outline
-  const hole = new THREE.Path(); hole.moveTo(-SUNK.x, -SUNK.z1); hole.lineTo(-SUNK.x, -SUNK.z0); hole.lineTo(SUNK.x, -SUNK.z0); hole.lineTo(SUNK.x, -SUNK.z1); hole.closePath();
-  shape.holes.push(hole);
-  W.waterMain = new THREE.Mesh(new THREE.ShapeGeometry(shape, 48).rotateX(-Math.PI / 2), water);
+  W.waterMain = new THREE.Mesh(new THREE.ShapeGeometry(floorShape(), 48).rotateX(-Math.PI / 2), water);
   W.waterMain.position.y = 0.05; scene.add(W.waterMain);
   const water2 = makeWater({ deep: 0x16211f, refl: 0x4a6060, toon: 1, opacity: 0.8, scale: 2.2 });
   W.waterSunk = new THREE.Mesh(new THREE.PlaneGeometry(SUNK.x * 2, SUNK.z1 - 1.05 - SUNK.z0).rotateX(-Math.PI / 2), water2);
