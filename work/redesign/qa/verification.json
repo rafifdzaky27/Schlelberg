@@ -1,0 +1,47 @@
+{
+  "pages": 292,
+  "chapter_text_mismatches": [],
+  "boundary_errors": [],
+  "plates": [
+    {
+      "chapter": 1,
+      "folio": 12,
+      "title": "The King\u2019s Measure",
+      "filename": "01-aras.png"
+    },
+    {
+      "chapter": 5,
+      "folio": 50,
+      "title": "The Far Shore",
+      "filename": "05-veyr.png"
+    },
+    {
+      "chapter": 9,
+      "folio": 88,
+      "title": "The Unbroken Edge",
+      "filename": "09-severance.png"
+    },
+    {
+      "chapter": 14,
+      "folio": 130,
+      "title": "Inside the Hollow",
+      "filename": "14-hollow.png"
+    },
+    {
+      "chapter": 28,
+      "folio": 240,
+      "title": "The Crossing",
+      "filename": "28-rescue.png"
+    },
+    {
+      "chapter": 31,
+      "folio": 268,
+      "title": "Fifteen Heartbeats",
+      "filename": "31-concourse.png"
+    }
+  ],
+  "all_chapters_recto": true,
+  "all_plates_start_verso": true,
+  "toc_links": 32,
+  "legacy_brand_absent": true
+}

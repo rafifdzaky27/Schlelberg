@@ -1,0 +1,6 @@
+PAGES 234
+CHAPTERS 32 AT [2, 12, 19, 28, 36, 43, 53, 60, 69, 76, 83, 90, 97, 105, 112, 119, 126, 133, 139, 145, 151, 158, 164, 170, 179, 186, 192, 199, 207, 214, 221, 229]
+EXTRACTED WORDS 76394
+ECHO 2 Don't go with him.
+ECHO 2 Tobi. Listen. They aren't looking for stores.
+ECHO 0 That door is what they came for. And now they know you can open it.

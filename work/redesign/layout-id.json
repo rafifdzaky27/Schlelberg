@@ -1,0 +1,1866 @@
+{
+  "starts": {
+    "1": 1,
+    "2": 15,
+    "3": 23,
+    "4": 33,
+    "5": 43,
+    "6": 55,
+    "7": 67,
+    "8": 75,
+    "9": 85,
+    "10": 97,
+    "11": 105,
+    "12": 113,
+    "13": 121,
+    "14": 131,
+    "15": 143,
+    "16": 151,
+    "17": 159,
+    "18": 167,
+    "19": 175,
+    "20": 183,
+    "21": 191,
+    "22": 199,
+    "23": 207,
+    "24": 215,
+    "25": 225,
+    "26": 233,
+    "27": 241,
+    "28": 249,
+    "29": 261,
+    "30": 269,
+    "31": 277,
+    "32": 289
+  },
+  "plates": [
+    {
+      "chapter": 1,
+      "folio": 12,
+      "title": "Takaran Sang Raja",
+      "filename": "01-aras.png"
+    },
+    {
+      "chapter": 5,
+      "folio": 52,
+      "title": "Seberang yang Jauh",
+      "filename": "05-veyr.png"
+    },
+    {
+      "chapter": 9,
+      "folio": 94,
+      "title": "Mata Pedang yang Tak Patah",
+      "filename": "09-severance.png"
+    },
+    {
+      "chapter": 14,
+      "folio": 140,
+      "title": "Di Dalam Rongga",
+      "filename": "14-hollow.png"
+    },
+    {
+      "chapter": 28,
+      "folio": 258,
+      "title": "Penyelamatan",
+      "filename": "28-rescue.png"
+    },
+    {
+      "chapter": 31,
+      "folio": 286,
+      "title": "Lima Belas Detak Jantung",
+      "filename": "31-concourse.png"
+    }
+  ],
+  "offset": 12,
+  "pages": 312,
+  "body_pages": [
+    {
+      "folio": 1,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 64.4
+    },
+    {
+      "folio": 2,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 58.4
+    },
+    {
+      "folio": 3,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 73.0
+    },
+    {
+      "folio": 4,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 87.6
+    },
+    {
+      "folio": 5,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 87.6
+    },
+    {
+      "folio": 6,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 60.2
+    },
+    {
+      "folio": 7,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 74.8
+    },
+    {
+      "folio": 8,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 58.4
+    },
+    {
+      "folio": 9,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 73.0
+    },
+    {
+      "folio": 10,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 58.4
+    },
+    {
+      "folio": 11,
+      "kind": "text",
+      "chapter": 1,
+      "bottom": 58.4
+    },
+    {
+      "folio": 12,
+      "kind": "art",
+      "chapter": 1,
+      "bottom": 584
+    },
+    {
+      "folio": 13,
+      "kind": "art",
+      "chapter": 1,
+      "bottom": 584
+    },
+    {
+      "folio": 14,
+      "kind": "blank",
+      "chapter": 1,
+      "bottom": 584
+    },
+    {
+      "folio": 15,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 64.4
+    },
+    {
+      "folio": 16,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 87.6
+    },
+    {
+      "folio": 17,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 58.4
+    },
+    {
+      "folio": 18,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 73.0
+    },
+    {
+      "folio": 19,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 87.6
+    },
+    {
+      "folio": 20,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 58.4
+    },
+    {
+      "folio": 21,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 58.4
+    },
+    {
+      "folio": 22,
+      "kind": "text",
+      "chapter": 2,
+      "bottom": 87.6
+    },
+    {
+      "folio": 23,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 64.4
+    },
+    {
+      "folio": 24,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 60.2
+    },
+    {
+      "folio": 25,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 58.4
+    },
+    {
+      "folio": 26,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 60.2
+    },
+    {
+      "folio": 27,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 58.4
+    },
+    {
+      "folio": 28,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 73.0
+    },
+    {
+      "folio": 29,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 58.4
+    },
+    {
+      "folio": 30,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 60.2
+    },
+    {
+      "folio": 31,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 58.4
+    },
+    {
+      "folio": 32,
+      "kind": "text",
+      "chapter": 3,
+      "bottom": 262.8
+    },
+    {
+      "folio": 33,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 79.0
+    },
+    {
+      "folio": 34,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 87.6
+    },
+    {
+      "folio": 35,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 60.2
+    },
+    {
+      "folio": 36,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 58.4
+    },
+    {
+      "folio": 37,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 58.4
+    },
+    {
+      "folio": 38,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 74.8
+    },
+    {
+      "folio": 39,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 73.0
+    },
+    {
+      "folio": 40,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 58.4
+    },
+    {
+      "folio": 41,
+      "kind": "text",
+      "chapter": 4,
+      "bottom": 496.4
+    },
+    {
+      "folio": 42,
+      "kind": "blank",
+      "chapter": 4,
+      "bottom": 584
+    },
+    {
+      "folio": 43,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 79.0
+    },
+    {
+      "folio": 44,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 74.8
+    },
+    {
+      "folio": 45,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 73.0
+    },
+    {
+      "folio": 46,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 74.8
+    },
+    {
+      "folio": 47,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 58.4
+    },
+    {
+      "folio": 48,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 60.2
+    },
+    {
+      "folio": 49,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 58.4
+    },
+    {
+      "folio": 50,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 58.4
+    },
+    {
+      "folio": 51,
+      "kind": "text",
+      "chapter": 5,
+      "bottom": 452.6
+    },
+    {
+      "folio": 52,
+      "kind": "art",
+      "chapter": 5,
+      "bottom": 584
+    },
+    {
+      "folio": 53,
+      "kind": "art",
+      "chapter": 5,
+      "bottom": 584
+    },
+    {
+      "folio": 54,
+      "kind": "blank",
+      "chapter": 5,
+      "bottom": 584
+    },
+    {
+      "folio": 55,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 64.4
+    },
+    {
+      "folio": 56,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 73.0
+    },
+    {
+      "folio": 57,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 60.2
+    },
+    {
+      "folio": 58,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 58.4
+    },
+    {
+      "folio": 59,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 74.8
+    },
+    {
+      "folio": 60,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 73.0
+    },
+    {
+      "folio": 61,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 58.4
+    },
+    {
+      "folio": 62,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 58.4
+    },
+    {
+      "folio": 63,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 60.2
+    },
+    {
+      "folio": 64,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 58.4
+    },
+    {
+      "folio": 65,
+      "kind": "text",
+      "chapter": 6,
+      "bottom": 467.2
+    },
+    {
+      "folio": 66,
+      "kind": "blank",
+      "chapter": 6,
+      "bottom": 584
+    },
+    {
+      "folio": 67,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 79.0
+    },
+    {
+      "folio": 68,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 73.0
+    },
+    {
+      "folio": 69,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 60.2
+    },
+    {
+      "folio": 70,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 73.0
+    },
+    {
+      "folio": 71,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 58.4
+    },
+    {
+      "folio": 72,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 60.2
+    },
+    {
+      "folio": 73,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 73.0
+    },
+    {
+      "folio": 74,
+      "kind": "text",
+      "chapter": 7,
+      "bottom": 408.8
+    },
+    {
+      "folio": 75,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 79.0
+    },
+    {
+      "folio": 76,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 58.4
+    },
+    {
+      "folio": 77,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 58.4
+    },
+    {
+      "folio": 78,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 60.2
+    },
+    {
+      "folio": 79,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 58.4
+    },
+    {
+      "folio": 80,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 58.4
+    },
+    {
+      "folio": 81,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 74.8
+    },
+    {
+      "folio": 82,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 60.2
+    },
+    {
+      "folio": 83,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 73.0
+    },
+    {
+      "folio": 84,
+      "kind": "text",
+      "chapter": 8,
+      "bottom": 321.2
+    },
+    {
+      "folio": 85,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 79.0
+    },
+    {
+      "folio": 86,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 73.0
+    },
+    {
+      "folio": 87,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 60.2
+    },
+    {
+      "folio": 88,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 73.0
+    },
+    {
+      "folio": 89,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 87.6
+    },
+    {
+      "folio": 90,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 60.2
+    },
+    {
+      "folio": 91,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 58.4
+    },
+    {
+      "folio": 92,
+      "kind": "text",
+      "chapter": 9,
+      "bottom": 248.2
+    },
+    {
+      "folio": 93,
+      "kind": "blank",
+      "chapter": 9,
+      "bottom": 584
+    },
+    {
+      "folio": 94,
+      "kind": "art",
+      "chapter": 9,
+      "bottom": 584
+    },
+    {
+      "folio": 95,
+      "kind": "art",
+      "chapter": 9,
+      "bottom": 584
+    },
+    {
+      "folio": 96,
+      "kind": "blank",
+      "chapter": 9,
+      "bottom": 584
+    },
+    {
+      "folio": 97,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 64.4
+    },
+    {
+      "folio": 98,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 73.0
+    },
+    {
+      "folio": 99,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 58.4
+    },
+    {
+      "folio": 100,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 60.2
+    },
+    {
+      "folio": 101,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 58.4
+    },
+    {
+      "folio": 102,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 89.4
+    },
+    {
+      "folio": 103,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 58.4
+    },
+    {
+      "folio": 104,
+      "kind": "text",
+      "chapter": 10,
+      "bottom": 511.0
+    },
+    {
+      "folio": 105,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 64.4
+    },
+    {
+      "folio": 106,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 58.4
+    },
+    {
+      "folio": 107,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 58.4
+    },
+    {
+      "folio": 108,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 87.6
+    },
+    {
+      "folio": 109,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 89.4
+    },
+    {
+      "folio": 110,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 60.2
+    },
+    {
+      "folio": 111,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 58.4
+    },
+    {
+      "folio": 112,
+      "kind": "text",
+      "chapter": 11,
+      "bottom": 365.0
+    },
+    {
+      "folio": 113,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 64.4
+    },
+    {
+      "folio": 114,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 58.4
+    },
+    {
+      "folio": 115,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 73.0
+    },
+    {
+      "folio": 116,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 60.2
+    },
+    {
+      "folio": 117,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 58.4
+    },
+    {
+      "folio": 118,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 74.8
+    },
+    {
+      "folio": 119,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 87.6
+    },
+    {
+      "folio": 120,
+      "kind": "text",
+      "chapter": 12,
+      "bottom": 219.0
+    },
+    {
+      "folio": 121,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 64.4
+    },
+    {
+      "folio": 122,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 58.4
+    },
+    {
+      "folio": 123,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 73.0
+    },
+    {
+      "folio": 124,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 60.2
+    },
+    {
+      "folio": 125,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 58.4
+    },
+    {
+      "folio": 126,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 58.4
+    },
+    {
+      "folio": 127,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 73.0
+    },
+    {
+      "folio": 128,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 74.8
+    },
+    {
+      "folio": 129,
+      "kind": "text",
+      "chapter": 13,
+      "bottom": 73.0
+    },
+    {
+      "folio": 130,
+      "kind": "blank",
+      "chapter": 13,
+      "bottom": 584
+    },
+    {
+      "folio": 131,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 64.4
+    },
+    {
+      "folio": 132,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 73.0
+    },
+    {
+      "folio": 133,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 73.0
+    },
+    {
+      "folio": 134,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 60.2
+    },
+    {
+      "folio": 135,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 73.0
+    },
+    {
+      "folio": 136,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 58.4
+    },
+    {
+      "folio": 137,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 74.8
+    },
+    {
+      "folio": 138,
+      "kind": "text",
+      "chapter": 14,
+      "bottom": 131.4
+    },
+    {
+      "folio": 139,
+      "kind": "blank",
+      "chapter": 14,
+      "bottom": 584
+    },
+    {
+      "folio": 140,
+      "kind": "art",
+      "chapter": 14,
+      "bottom": 584
+    },
+    {
+      "folio": 141,
+      "kind": "art",
+      "chapter": 14,
+      "bottom": 584
+    },
+    {
+      "folio": 142,
+      "kind": "blank",
+      "chapter": 14,
+      "bottom": 584
+    },
+    {
+      "folio": 143,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 64.4
+    },
+    {
+      "folio": 144,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 58.4
+    },
+    {
+      "folio": 145,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 60.2
+    },
+    {
+      "folio": 146,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 73.0
+    },
+    {
+      "folio": 147,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 58.4
+    },
+    {
+      "folio": 148,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 89.4
+    },
+    {
+      "folio": 149,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 58.4
+    },
+    {
+      "folio": 150,
+      "kind": "text",
+      "chapter": 15,
+      "bottom": 102.2
+    },
+    {
+      "folio": 151,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 64.4
+    },
+    {
+      "folio": 152,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 73.0
+    },
+    {
+      "folio": 153,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 58.4
+    },
+    {
+      "folio": 154,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 74.8
+    },
+    {
+      "folio": 155,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 58.4
+    },
+    {
+      "folio": 156,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 74.8
+    },
+    {
+      "folio": 157,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 58.4
+    },
+    {
+      "folio": 158,
+      "kind": "text",
+      "chapter": 16,
+      "bottom": 467.2
+    },
+    {
+      "folio": 159,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 64.4
+    },
+    {
+      "folio": 160,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 73.0
+    },
+    {
+      "folio": 161,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 60.2
+    },
+    {
+      "folio": 162,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 73.0
+    },
+    {
+      "folio": 163,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 58.4
+    },
+    {
+      "folio": 164,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 60.2
+    },
+    {
+      "folio": 165,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 58.4
+    },
+    {
+      "folio": 166,
+      "kind": "text",
+      "chapter": 17,
+      "bottom": 58.4
+    },
+    {
+      "folio": 167,
+      "kind": "text",
+      "chapter": 18,
+      "bottom": 79.0
+    },
+    {
+      "folio": 168,
+      "kind": "text",
+      "chapter": 18,
+      "bottom": 58.4
+    },
+    {
+      "folio": 169,
+      "kind": "text",
+      "chapter": 18,
+      "bottom": 58.4
+    },
+    {
+      "folio": 170,
+      "kind": "text",
+      "chapter": 18,
+      "bottom": 58.4
+    },
+    {
+      "folio": 171,
+      "kind": "text",
+      "chapter": 18,
+      "bottom": 74.8
+    },
+    {
+      "folio": 172,
+      "kind": "text",
+      "chapter": 18,
+      "bottom": 58.4
+    },
+    {
+      "folio": 173,
+      "kind": "text",
+      "chapter": 18,
+      "bottom": 73.0
+    },
+    {
+      "folio": 174,
+      "kind": "blank",
+      "chapter": 18,
+      "bottom": 584
+    },
+    {
+      "folio": 175,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 64.4
+    },
+    {
+      "folio": 176,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 58.4
+    },
+    {
+      "folio": 177,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 60.2
+    },
+    {
+      "folio": 178,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 87.6
+    },
+    {
+      "folio": 179,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 58.4
+    },
+    {
+      "folio": 180,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 60.2
+    },
+    {
+      "folio": 181,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 73.0
+    },
+    {
+      "folio": 182,
+      "kind": "text",
+      "chapter": 19,
+      "bottom": 554.8
+    },
+    {
+      "folio": 183,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 79.0
+    },
+    {
+      "folio": 184,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 58.4
+    },
+    {
+      "folio": 185,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 58.4
+    },
+    {
+      "folio": 186,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 60.2
+    },
+    {
+      "folio": 187,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 58.4
+    },
+    {
+      "folio": 188,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 58.4
+    },
+    {
+      "folio": 189,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 74.8
+    },
+    {
+      "folio": 190,
+      "kind": "text",
+      "chapter": 20,
+      "bottom": 554.8
+    },
+    {
+      "folio": 191,
+      "kind": "text",
+      "chapter": 21,
+      "bottom": 79.0
+    },
+    {
+      "folio": 192,
+      "kind": "text",
+      "chapter": 21,
+      "bottom": 58.4
+    },
+    {
+      "folio": 193,
+      "kind": "text",
+      "chapter": 21,
+      "bottom": 58.4
+    },
+    {
+      "folio": 194,
+      "kind": "text",
+      "chapter": 21,
+      "bottom": 60.2
+    },
+    {
+      "folio": 195,
+      "kind": "text",
+      "chapter": 21,
+      "bottom": 58.4
+    },
+    {
+      "folio": 196,
+      "kind": "text",
+      "chapter": 21,
+      "bottom": 58.4
+    },
+    {
+      "folio": 197,
+      "kind": "text",
+      "chapter": 21,
+      "bottom": 116.8
+    },
+    {
+      "folio": 198,
+      "kind": "blank",
+      "chapter": 21,
+      "bottom": 584
+    },
+    {
+      "folio": 199,
+      "kind": "text",
+      "chapter": 22,
+      "bottom": 64.4
+    },
+    {
+      "folio": 200,
+      "kind": "text",
+      "chapter": 22,
+      "bottom": 73.0
+    },
+    {
+      "folio": 201,
+      "kind": "text",
+      "chapter": 22,
+      "bottom": 74.8
+    },
+    {
+      "folio": 202,
+      "kind": "text",
+      "chapter": 22,
+      "bottom": 58.4
+    },
+    {
+      "folio": 203,
+      "kind": "text",
+      "chapter": 22,
+      "bottom": 60.2
+    },
+    {
+      "folio": 204,
+      "kind": "text",
+      "chapter": 22,
+      "bottom": 73.0
+    },
+    {
+      "folio": 205,
+      "kind": "text",
+      "chapter": 22,
+      "bottom": 133.2
+    },
+    {
+      "folio": 206,
+      "kind": "blank",
+      "chapter": 22,
+      "bottom": 584
+    },
+    {
+      "folio": 207,
+      "kind": "text",
+      "chapter": 23,
+      "bottom": 64.4
+    },
+    {
+      "folio": 208,
+      "kind": "text",
+      "chapter": 23,
+      "bottom": 73.0
+    },
+    {
+      "folio": 209,
+      "kind": "text",
+      "chapter": 23,
+      "bottom": 87.6
+    },
+    {
+      "folio": 210,
+      "kind": "text",
+      "chapter": 23,
+      "bottom": 58.4
+    },
+    {
+      "folio": 211,
+      "kind": "text",
+      "chapter": 23,
+      "bottom": 74.8
+    },
+    {
+      "folio": 212,
+      "kind": "text",
+      "chapter": 23,
+      "bottom": 58.4
+    },
+    {
+      "folio": 213,
+      "kind": "text",
+      "chapter": 23,
+      "bottom": 87.6
+    },
+    {
+      "folio": 214,
+      "kind": "blank",
+      "chapter": 23,
+      "bottom": 584
+    },
+    {
+      "folio": 215,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 79.0
+    },
+    {
+      "folio": 216,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 58.4
+    },
+    {
+      "folio": 217,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 73.0
+    },
+    {
+      "folio": 218,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 60.2
+    },
+    {
+      "folio": 219,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 73.0
+    },
+    {
+      "folio": 220,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 73.0
+    },
+    {
+      "folio": 221,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 60.2
+    },
+    {
+      "folio": 222,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 58.4
+    },
+    {
+      "folio": 223,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 58.4
+    },
+    {
+      "folio": 224,
+      "kind": "text",
+      "chapter": 24,
+      "bottom": 321.2
+    },
+    {
+      "folio": 225,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 64.4
+    },
+    {
+      "folio": 226,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 58.4
+    },
+    {
+      "folio": 227,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 60.2
+    },
+    {
+      "folio": 228,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 58.4
+    },
+    {
+      "folio": 229,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 58.4
+    },
+    {
+      "folio": 230,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 60.2
+    },
+    {
+      "folio": 231,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 58.4
+    },
+    {
+      "folio": 232,
+      "kind": "text",
+      "chapter": 25,
+      "bottom": 379.6
+    },
+    {
+      "folio": 233,
+      "kind": "text",
+      "chapter": 26,
+      "bottom": 79.0
+    },
+    {
+      "folio": 234,
+      "kind": "text",
+      "chapter": 26,
+      "bottom": 58.4
+    },
+    {
+      "folio": 235,
+      "kind": "text",
+      "chapter": 26,
+      "bottom": 58.4
+    },
+    {
+      "folio": 236,
+      "kind": "text",
+      "chapter": 26,
+      "bottom": 74.8
+    },
+    {
+      "folio": 237,
+      "kind": "text",
+      "chapter": 26,
+      "bottom": 58.4
+    },
+    {
+      "folio": 238,
+      "kind": "text",
+      "chapter": 26,
+      "bottom": 60.2
+    },
+    {
+      "folio": 239,
+      "kind": "text",
+      "chapter": 26,
+      "bottom": 204.4
+    },
+    {
+      "folio": 240,
+      "kind": "blank",
+      "chapter": 26,
+      "bottom": 584
+    },
+    {
+      "folio": 241,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 79.0
+    },
+    {
+      "folio": 242,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 58.4
+    },
+    {
+      "folio": 243,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 58.4
+    },
+    {
+      "folio": 244,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 89.4
+    },
+    {
+      "folio": 245,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 58.4
+    },
+    {
+      "folio": 246,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 58.4
+    },
+    {
+      "folio": 247,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 73.0
+    },
+    {
+      "folio": 248,
+      "kind": "text",
+      "chapter": 27,
+      "bottom": 116.8
+    },
+    {
+      "folio": 249,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 64.4
+    },
+    {
+      "folio": 250,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 58.4
+    },
+    {
+      "folio": 251,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 73.0
+    },
+    {
+      "folio": 252,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 74.8
+    },
+    {
+      "folio": 253,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 58.4
+    },
+    {
+      "folio": 254,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 58.4
+    },
+    {
+      "folio": 255,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 60.2
+    },
+    {
+      "folio": 256,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 58.4
+    },
+    {
+      "folio": 257,
+      "kind": "text",
+      "chapter": 28,
+      "bottom": 131.4
+    },
+    {
+      "folio": 258,
+      "kind": "art",
+      "chapter": 28,
+      "bottom": 584
+    },
+    {
+      "folio": 259,
+      "kind": "art",
+      "chapter": 28,
+      "bottom": 584
+    },
+    {
+      "folio": 260,
+      "kind": "blank",
+      "chapter": 28,
+      "bottom": 584
+    },
+    {
+      "folio": 261,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 64.4
+    },
+    {
+      "folio": 262,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 58.4
+    },
+    {
+      "folio": 263,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 58.4
+    },
+    {
+      "folio": 264,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 74.8
+    },
+    {
+      "folio": 265,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 58.4
+    },
+    {
+      "folio": 266,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 73.0
+    },
+    {
+      "folio": 267,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 60.2
+    },
+    {
+      "folio": 268,
+      "kind": "text",
+      "chapter": 29,
+      "bottom": 277.4
+    },
+    {
+      "folio": 269,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 79.0
+    },
+    {
+      "folio": 270,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 73.0
+    },
+    {
+      "folio": 271,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 58.4
+    },
+    {
+      "folio": 272,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 58.4
+    },
+    {
+      "folio": 273,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 73.0
+    },
+    {
+      "folio": 274,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 58.4
+    },
+    {
+      "folio": 275,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 58.4
+    },
+    {
+      "folio": 276,
+      "kind": "text",
+      "chapter": 30,
+      "bottom": 262.8
+    },
+    {
+      "folio": 277,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 79.0
+    },
+    {
+      "folio": 278,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 58.4
+    },
+    {
+      "folio": 279,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 74.8
+    },
+    {
+      "folio": 280,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 73.0
+    },
+    {
+      "folio": 281,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 73.0
+    },
+    {
+      "folio": 282,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 60.2
+    },
+    {
+      "folio": 283,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 58.4
+    },
+    {
+      "folio": 284,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 58.4
+    },
+    {
+      "folio": 285,
+      "kind": "text",
+      "chapter": 31,
+      "bottom": 321.2
+    },
+    {
+      "folio": 286,
+      "kind": "art",
+      "chapter": 31,
+      "bottom": 584
+    },
+    {
+      "folio": 287,
+      "kind": "art",
+      "chapter": 31,
+      "bottom": 584
+    },
+    {
+      "folio": 288,
+      "kind": "blank",
+      "chapter": 31,
+      "bottom": 584
+    },
+    {
+      "folio": 289,
+      "kind": "text",
+      "chapter": 32,
+      "bottom": 79.0
+    },
+    {
+      "folio": 290,
+      "kind": "text",
+      "chapter": 32,
+      "bottom": 73.0
+    },
+    {
+      "folio": 291,
+      "kind": "text",
+      "chapter": 32,
+      "bottom": 60.2
+    },
+    {
+      "folio": 292,
+      "kind": "text",
+      "chapter": 32,
+      "bottom": 58.4
+    },
+    {
+      "folio": 293,
+      "kind": "text",
+      "chapter": 32,
+      "bottom": 58.4
+    },
+    {
+      "folio": 294,
+      "kind": "text",
+      "chapter": 32,
+      "bottom": 74.8
+    },
+    {
+      "folio": 295,
+      "kind": "text",
+      "chapter": 32,
+      "bottom": 233.6
+    },
+    {
+      "folio": 296,
+      "kind": "blank",
+      "chapter": 32,
+      "bottom": 584
+    },
+    {
+      "folio": 297,
+      "kind": "colophon",
+      "chapter": 32,
+      "bottom": 584
+    },
+    {
+      "folio": 298,
+      "kind": "blank",
+      "chapter": 32,
+      "bottom": 584
+    }
+  ]
+}
