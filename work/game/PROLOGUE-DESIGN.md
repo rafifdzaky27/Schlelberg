@@ -17,10 +17,18 @@ Target length: 15 to 20 minutes on a first play.
 
 ## 2. Core mechanics
 
-### 2.1 Movement
-- Keyboard: WASD or the arrow keys. Movement follows the camera, so "up" means away from the camera.
+### 2.1 Controls (keyboard and mouse only)
+| Input | Action |
+|---|---|
+| WASD or arrow keys | Walk. "Up" means away from the camera. |
+| E | Look, use, hold, rhythm |
+| Space | Timed inputs (the spear sweep, the wedge) |
+| Tab | Open the ledger |
+| Mouse | Story cards (S1 to S3), the ledger, menus. Click also works for E prompts. |
+| Esc | Pause menu |
+
+### 2.1b Movement
 - When the camera cuts, the old direction stays in effect until the player lets go of the key. This stops Tobious from turning around by accident at every cut.
-- A gamepad works the same way with the left stick. It is optional.
 - Walk only. There is no run button. Tobious runs only in scripted moments.
 - Water slows him by 20 percent and makes splash sounds.
 
@@ -45,7 +53,7 @@ Interaction prompts appear as small painted labels near the object, never as flo
 ### 2.4 The ledger (names, not numbers)
 - Opened with Tab. It is drawn as Mariya's waxed tally board.
 - **People:** a name appears only when Tobious learns it in the story. Before that the entry says "the water boy" or "the overseer".
-- **Things noticed:** Look interactions add short notes in plain language, for example "The measure has a new band. It is deeper than yesterday's."
+- **Things noticed:** Look interactions add a short quote from the book, with its chapter. For example: *"The rim used to end there. You've added another band."* (Chapter 1).
 - The ledger never changes outcomes. It records what Tobious knows, and in later chapters it becomes Mariya's roll.
 
 ### 2.5 Canon-safe failure ("That is not how it went")
@@ -103,37 +111,37 @@ Checkpoints: the start of every beat, plus micro-checkpoints inside U8, U9 and U
 
 Each beat lists: place, camera, what the player does, what happens in canon, dialogue, and assets needed.
 
-### S1. Granary yard (Chapter 1)
-- **Place:** the granary door, the yard, fourteen jars in a row. Terraces fall toward the bay. The red cloth of Telassar flies on the ridge across the valley.
-- **Cameras:** C-S1a wide establishing shot from the yard gate. C-S1b over Tobious's shoulder at the jars. C-S1c low shot at the threshold for the fall.
-- **Opening:** title text over the wide shot: *"On the ninth day of the occupation, the soldiers came for the seed."*
-- **Player can:**
-  1. Look at the soldiers (ledger: seven soldiers, a scribe, four donkeys) and the boy with the rope (ledger: "the water boy").
-  2. Look at the pebble board at Mariya's feet (ledger: fourteen jars, three held apart).
-  3. **Use:** lift the lid of the first jar when the officer says "Open them."
-  4. **Look:** watch the measure's rim. This unlocks the line "That's too deep."
-- **Canon sequence (played after the player notices the measure):** the argument about the measure, Mariya bargains ("Nineteen. Twenty-one if you release the two beside the well."), the officer allows two jars.
-- **Player action:** grains spill. **Hold E** to kneel and gather them. When he stands, a soldier is dragging the jar with the leaf mark.
-- **The grab:** the player can walk to the jar and **Hold E** on the handle. There is no way to win. The spear shaft strikes the wrist, the shield rim hits his chest, the boot sweeps his ankle, and he lands on the paving. If the player never grabs, the same sequence starts by itself after 8 seconds, because in canon he does. The camera goes to C-S1c for the fall.
-- **Close shot:** a barley grain between two stones, an ant crossing it.
-- **Dialogue after the fall:** Mariya names him as the sluice worker. The officer: "You'll start now. Under the hill. Until the work is done." Mariya: "We still have two. Help me keep them."
-- **Mechanic unlocked:** the injured right hand.
-- **Assets:** Tobious, Mariya, officer (soldier body with bronze corselet texture), scribe, three to four visible soldiers (the rest implied by framing), Lios with rope, jars, measure, clay tablet, stylus, bull seal. Donkeys as distant silhouettes only.
+### How the story cards work (S1 to S3)
+The surface opening is told with **painted story cards**, not 3D. Decision: option B.
 
-### S2. Behind the granary (Chapter 1)
-- **Place:** a narrow shaded space behind the granary.
-- **Camera:** C-S2 a fixed two-shot of Tobious and Mariya sitting.
-- **Player can:** nothing but choose when to answer. This is a quiet dialogue scene with a **Use** prompt to offer the bread.
-- **Canon dialogue (shortened):** "You gave them my name?" / "They're taking workers from every household..." / "Without asking me." / "If I'd had a sword—" / "He would have taken it from you." / "I saw it, Tobi."
-- **Player action:** **Use** the flattened half loaf. He breaks it. Mariya takes the smaller piece, looks at it, and swaps it for his. This is the scene's emotional beat and needs no words.
-- **Assets:** Tobious, Mariya, cloth, bowl, bread.
+- Each card is one painting in the visual-bible style, generated with ChatGPT from prompts I write.
+- Every painting is split into 3 or 4 depth layers: sky, background, figures, foreground. The camera drifts slowly across them, so the image has depth without being 3D.
+- Book text appears in a caption box at the bottom, one line at a time. Click or press E to move on.
+- Some cards have **hotspots**. Hovering highlights a detail. Clicking adds a quote to the ledger or starts the next moment.
+- Sound runs under the cards exactly as in 3D: wind, the yard, soldiers' boots, grain pouring.
+- The right-hand injury, the ledger and the rewind all begin here, so the cards teach the controls.
 
-### S3. Ancestor terrace (Chapter 1)
-- **Place:** the terrace above the old storehouse, the well, the statue of the woman with the bowl, the stairs down between two old walls, the burned fence.
-- **Camera:** C-S3 wide, from beside the well.
-- **Player can:** Look at the statue while three soldiers lower it (ledger: "As a child, he wet her feet with the first water he drew"). Look at the pale circle where she stood.
-- **Canon:** a guard pushes him with a spear shaft: "Down."
-- **Assets:** statue (Blender), well, soldiers x2 to x3, fence planks.
+### S1. Granary yard (Chapter 1): 5 cards
+| Card | Painting | Player | Text (from the book) |
+|---|---|---|---|
+| S1-1 | Wide view: Aras terraces falling to the bay, the granary, soldiers arriving with donkeys, the red cloth of Telassar on the far ridge | Click to continue | *"On the ninth day of the occupation, the soldiers came for the seed."* |
+| S1-2 | Mariya at the jars with her pebble board, Tobious beside her, the officer in his bronze corselet | Hotspots: the pebble board, the boy with the rope, the scribe | *"Fourteen jars. Eleven for the palace. Three for sowing after the rains."* |
+| S1-3 | Close on the wooden measure in a soldier's hand, the dark line around the wood | **Required hotspot:** the rim. Tobious speaks. | *"That's too deep."* / *"Your measure. The rim used to end there. You've added another band."* |
+| S1-4 | A soldier dragging the jar with the scratched leaf toward the threshold | **Hold E** on the jar handle. It always fails. If the player waits, it happens after 8 seconds anyway. | *"Tobious did not think of the seven spears. He saw a crack running down beneath the leaf."* |
+| S1-5 | Close on the paving: one barley grain between two stones, an ant crossing it | Click. The hand icon appears (right wrist injured). | *"You'll start now. Under the hill. Until the work is done."* / *"We still have two. Help me keep them."* |
+
+### S2. Behind the granary (Chapter 1): 2 cards
+| Card | Painting | Player | Text |
+|---|---|---|---|
+| S2-1 | Mariya cleaning blood from Tobious's lip, a bowl of water turning red | Click through the dialogue | *"You gave them my name?"* / *"Without asking me."* / *"He would have taken it from you."* / *"I saw it, Tobi."* |
+| S2-2 | His hands breaking the flattened half loaf | **Use** the bread. The card changes: Mariya looks at the smaller piece and swaps it for his. | *"They ate without speaking."* |
+
+### S3. Ancestor terrace (Chapter 1): 1 card
+| Card | Painting | Player | Text |
+|---|---|---|---|
+| S3-1 | Soldiers lowering the wrapped statue of the woman with the bowl beside the well, the stairs going down between two old walls | Hotspot: the pale circle where she stood. Then click the stairs to go down. | *"A guard pushed him between the shoulders with a spear shaft. 'Down.'"* |
+
+The transition from S3-1 into U1 is the moment the game becomes 3D. The painting dissolves into the 3D stair seen from the same angle.
 
 ### U1. Stair and passage (Chapter 1)
 - **Place:** steps down between old walls, cooler air, lamp oil.
@@ -255,9 +263,7 @@ The central sequence. Four rounds in canon order. Each has a micro-checkpoint.
 ## 5. Cameras (summary)
 | ID | Room | Type |
 |---|---|---|
-| C-S1a, b, c | Granary yard | Wide, shoulder, low fall shot |
-| C-S2 | Behind the granary | Fixed two-shot |
-| C-S3 | Ancestor terrace | Wide |
+| S1 to S3 | Surface | Painted story cards with a slow parallax drift, no 3D camera |
 | C-U1a, b | Stair, passage | High down the stair, along the passage |
 | C-U3a, b | Chamber | High wide, low at the drain |
 | C-U5 | Threshold | Close three-quarter |
@@ -270,51 +276,35 @@ The central sequence. Four rounds in canon order. Each has a micro-checkpoint.
 
 ---
 
-## 6. Sound design
-| Cue | Where | Meaning |
-|---|---|---|
-| Drips, low room tone | Underground | Baseline |
-| Hum through the rod | U5 | The frame is alive |
-| Silence, water stops | U5 end | The echo begins |
-| Faint city wind, a far crash | U6 | The future |
-| Metal click, pressure in the teeth | U8 | The live opening |
-| Rushing air toward the door | U8 to U11 | The gradient is strong |
-| Mineral clicking | Iwang near | It is gathering |
-| Low empty note | Iwang moving | Air in the hollow torso |
-| Clamp snap like a cracking jar | U11 end | The door closes |
-
-No voice acting in the first build. All speech is subtitled.
+## 6. Sound
+The full sound plan is in `SOUND-DESIGN.md`. There is no voice acting. All speech is subtitled.
 
 ---
 
 ## 7. Cast and asset list for the prologue
-| Character | Beats | Source |
+| Character | Where | Source |
 |---|---|---|
-| Tobious (farmer) | all | Tripo |
-| Future Tobious | U6 | Tobious model with a new texture and short hair, or a later Tripo model |
-| Mariya | S1, S2 | Tripo |
+| Tobious (farmer) | U1 to E1, and the cards | Tripo (3D), ChatGPT paintings (cards) |
+| Future Tobious | U6 | Tobious model with short hair and a field-clothes texture |
+| Mariya | S1, S2 cards only | ChatGPT paintings. **No Tripo model needed for the prologue.** |
 | Samon | U1 to U12 | Tripo |
 | Darran | U3 to U10, E1 | Tripo |
-| Lios | S1, U7 to U9, E1 | Tripo |
-| Telassari soldier and the guard | S1, S3, U1 to U9, E1 | Tripo, retextured for the officer |
-| Scribe | S1 | Soldier body, new texture, no sash |
-| Aras workers (x3 to x4) | U1, U3, U10 | Samon or Darran body, new textures |
+| Lios | U7 to U9, E1 (and the S1 card) | Tripo |
+| Telassari guard | U1 to U9, E1 | Tripo |
+| Aras workers (x3 to x4) | U1, U3, U10 | Samon or Darran body with new textures |
 | Iwang | U8 to U11 | Tripo |
 
-Props made in Blender: jars (fourteen), the measure, the clay tablet, the stylus, the pebble board, the bread, the statue, baskets, rope, the rod, the shard, the three-wicked lamp, the hide drawing and tube, the spears, the hide shield, the jug and its pieces, the slab, the lever, the wedge stone, the clamp.
+Officer, scribe, donkeys and the statue scene appear only in the cards, so they need no 3D models.
+
+Props made in Blender: the rod, the shard, the three-wicked lamp, the hide drawing and its tube, spears, the hide shield, the jug and its pieces, baskets, rope, the slab, the lever, the wedge stone, the clamp.
+
+Story card paintings (ChatGPT): 8 cards, S1-1 to S3-1, each delivered as a full painting plus separated layers.
 
 ---
 
-## 8. Scope decision needed
-The surface beats (S1 to S3, E1) need the largest cast and a large outdoor set. Two options:
-
-- **Option A: full 3D.** Everything is playable as described. More cost and time.
-- **Option B: painted story cards for S1 to S3.** Three to five painted panels made with ChatGPT in the visual-bible style, with the canon text and one or two simple interactions on top (noticing the measure, the bread). The 3D game starts at U1. E1 stays in 3D because it happens in the underground passage and the small yard.
-
-**My recommendation:** Option B for the first build. The underground half is the heart of the prologue and uses the Tripo budget well. The granary yard can become 3D later.
-
-## 9. Other open questions
-1. Is the "No. That is not how it went." rewind line right for the tone?
-2. Keyboard and mouse only, or gamepad support from the start?
-3. The guard's death is sound-only, as in the book. Is that the right level?
-4. Should the ledger quote the book's prose, or use short plain notes?
+## 8. Decisions (fixed on 29 September 2026)
+1. **Surface scenes:** option B, painted story cards for S1 to S3. The 3D game starts at U1.
+2. **Rewind line:** "No. That is not how it went." Approved.
+3. **Controls:** keyboard and mouse only.
+4. **The guard's death:** sound only, as in the book.
+5. **Ledger:** quotes the book, with chapter numbers.

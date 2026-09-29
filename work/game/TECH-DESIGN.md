@@ -16,7 +16,6 @@ work/game/
 ├─ blender/
 │  ├─ lib/                   shared helpers (materials, bake, export, render preview)
 │  ├─ env_chamber.py         stair, passage, chamber, threshold, slab
-│  ├─ env_surface.py         yard and terrace (later)
 │  ├─ env_veyr_echo.py       skyline for the echo
 │  ├─ props.py               jars, lamp, rod, spears, jug, lever...
 │  ├─ char_cleanup.py        scale, origin, decimate, hollow chest, weights
@@ -24,12 +23,13 @@ work/game/
 │  ├─ cameras.py             fixed cameras and cutscene paths
 │  └─ previews/              rendered stills and GIFs for review
 ├─ web/                      the game (Vite project)
-│  ├─ public/assets/         exported .glb, textures, audio
+│  ├─ public/assets/         exported .glb, textures, card layers, audio
+│  ├─ public/assets/audio/CREDITS.md  source and licence for every recording
 │  ├─ src/
 │  │  ├─ main.ts
 │  │  ├─ core/               Game loop, AssetLoader, Input, Save
 │  │  ├─ systems/            CameraZones, Movement, Animation, Interaction,
-│  │  │                      Story, Dialogue, Ledger, Rewind, Audio
+│  │  │                      Story, Dialogue, Ledger, Rewind, Audio, StoryCards
 │  │  ├─ actors/             Player, Npc, Iwang
 │  │  ├─ fx/                 Water, Threshold, IwangMaterial, LampFlicker, PostFX
 │  │  ├─ ui/                 Prompts, Subtitles, Ledger, HandIcon, Menu
@@ -174,6 +174,22 @@ Example:
 
 ### 4.8 Save
 - The beat id and flags go to `localStorage` at each checkpoint, inside try/catch. The game still works if storage is blocked.
+
+### 4.9 Story cards
+- Each card is a set of 3 or 4 transparent image layers plus a JSON entry: layer depths, caption lines, hotspots and the drift path.
+- Rendered in the same Three.js canvas as flat planes at different depths, so the parallax, the painterly filter and the sound all match the 3D part.
+- Hotspots are screen regions. Hover highlights them, click triggers ledger entries or the next moment.
+- Card steps live in the same `prologue.json` as the 3D beats, so one story system runs the whole prologue.
+- The last card (S3-1) dissolves into the 3D stair seen from the same angle.
+
+### 4.10 Audio
+- Web Audio through Three.js `AudioListener` and `PositionalAudio`.
+- Synthesized sounds are small generator functions: filtered noise for wind and air rush, low oscillators for the hum and pressure, short noise bursts for clicks, and plucked-string synthesis for the music.
+- Recordings are short compressed files (`.ogg` with an `.m4a` fallback).
+- A mixer with buses: ambience, effects, Iwang, music, interface. Each bus has a volume slider.
+- Live parameters: `gradient` and each Iwang's `coherence` drive filters and volumes as described in `SOUND-DESIGN.md`.
+- Short room echoes are generated in code per room.
+- A `?soundtest` page plays every cue on its own button, for your review.
 
 ## 5. Visual effects
 
