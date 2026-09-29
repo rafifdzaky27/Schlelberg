@@ -233,7 +233,7 @@ setStyle(state.style);
 setPlace(state.place);
 setCam(state.cam);
 setIwang('code');
-chamber.loadTripo('assets/iwang.glb').then(() => { if (opt('tripo')) setIwang('tripo'); }).catch((e) => { console.warn('Tripo Iwang not loaded', e); $('iw-tripo').disabled = true; });
+chamber.loadTripo('assets/iwang-glb.b64.txt').then(() => { if (opt('tripo')) setIwang('tripo'); }).catch((e) => { console.warn('Tripo Iwang not loaded', e); $('iw-tripo').disabled = true; });
 requestAnimationFrame(frame);
 setTimeout(() => { $('loading').style.opacity = 0; setTimeout(() => $('loading').remove(), 900); }, 300);
 

@@ -36,7 +36,7 @@ export class Chamber {
     this.iwTripo = null;
     this.iwangMode = 'code';
     this.cams = this.buildCameras();
-    this.spawn = new THREE.Vector3(0.6, 0, 3.2);
+    this.spawn = new THREE.Vector3(1.0, 0, 1.6);
     this.reset();
   }
 
@@ -48,6 +48,7 @@ export class Chamber {
     const hole = new THREE.Path(); hole.moveTo(PIT.x0, -PIT.z1); hole.lineTo(PIT.x1, -PIT.z1); hole.lineTo(PIT.x1, -PIT.z0); hole.lineTo(PIT.x0, -PIT.z0); hole.lineTo(PIT.x0, -PIT.z1);
     shape.holes.push(hole);
     const fg = scaleUV(new THREE.ShapeGeometry(shape, 48), 0.22); fg.rotateX(-Math.PI / 2);
+    this.floorShape = shape;
     s.add(tag(new THREE.Mesh(fg), 'stoneFloor', false, true));
     // wall and dome
     const wg = new THREE.CylinderGeometry(R, R, 4.6, 64, 1, true);
@@ -112,8 +113,8 @@ export class Chamber {
           vec2 uv = vUv; float t = uTime;
           vec3 col = vec3(0.008, 0.008, 0.01) + 0.012 * iwFbm(vec3(uv * vec2(6., 9.), t * 0.05));
           float d = abs(uv.y - uFace);
-          float half = uOpen * 0.78;
-          float mask = 1.0 - smoothstep(half - 0.02, half + 0.015, d);
+          float hw = uOpen * 0.78;
+          float mask = 1.0 - smoothstep(hw - 0.02, hw + 0.015, d);
           mask *= smoothstep(0.0, 0.03, uv.x) * smoothstep(1.0, 0.97, uv.x);
           if (uState > 0.5 && uState < 1.5) {
             vec2 w = uv + vec2(sin(uv.y * 40. + t * 2.1), sin(uv.x * 30. + t * 1.7)) * 0.0025;
@@ -200,7 +201,7 @@ export class Chamber {
     const rod = tag(new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 1.5, 6)), 'wood'); rod.rotation.set(Math.PI / 2, 0, 0.6); rod.position.set(-0.5, PIT.floor + 0.03, -3.4); s.add(rod);
     const lever = tag(new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 2.2)), 'wood'); lever.position.set(-3.1, 0.06, -2.0); lever.rotation.y = 0.9; s.add(lever);
     // water on the main floor and in the pit
-    this.waterMain = new THREE.Mesh(new THREE.CircleGeometry(R - 0.02, 64).rotateX(-Math.PI / 2), makeWater({ deep: 0x15191a, refl: 0x4a5354 }));
+    this.waterMain = new THREE.Mesh(new THREE.ShapeGeometry(this.floorShape, 48).rotateX(-Math.PI / 2), makeWater({ deep: 0x15191a, refl: 0x4a5354 }));
     this.waterMain.position.y = 0.07; s.add(this.waterMain);
     this.waterPit = new THREE.Mesh(new THREE.PlaneGeometry(PIT.x1 - PIT.x0, 3.35).rotateX(-Math.PI / 2), makeWater({ deep: 0x15191a, refl: 0x4a5354 }));
     this.waterPit.position.set(0, PIT.floor + 0.09, -3.6); s.add(this.waterPit);
@@ -215,7 +216,7 @@ export class Chamber {
     this.dustV = new Float32Array(N * 3);
     for (let i = 0; i < N; i++) { const a = Math.random() * Math.PI * 2, r = Math.sqrt(Math.random()) * (R - 0.3); pos[i * 3] = Math.cos(a) * r; pos[i * 3 + 1] = Math.random() * 3.2 - 0.8; pos[i * 3 + 2] = Math.sin(a) * r; }
     g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    this.dust = new THREE.Points(g, new THREE.PointsMaterial({ color: 0xd8c8a8, size: 0.018, transparent: true, opacity: 0.55, depthWrite: false }));
+    this.dust = new THREE.Points(g, new THREE.PointsMaterial({ color: 0xd8c8a8, size: 0.012, transparent: true, opacity: 0.35, depthWrite: false }));
     this.scene.add(this.dust);
   }
 
@@ -223,15 +224,18 @@ export class Chamber {
     const mk = (fov, p, l) => { const c = new THREE.PerspectiveCamera(fov, 1, 0.05, 80); c.position.set(...p); c.lookAt(...l); c.userData.look = new THREE.Vector3(...l); return c; };
     return {
       wide: mk(52, [-0.8, 3.7, 5.3], [0.2, -0.5, -2.6]),
-      pit: mk(46, [2.75, 1.25, -0.35], [-0.5, -0.45, -4.7]),
-      echo: mk(40, [0.95, -0.15, -1.75], [-0.05, 0.25, -5.3]),
+      pit: mk(50, [-2.35, 1.35, -1.0], [0.35, -0.3, -5.3]),
+      echo: mk(44, [-1.05, 0.15, -2.2], [0.25, 0.05, -5.3]),
       live: mk(42, [-2.3, 1.55, 0.9], [0.1, -0.2, -4.4]),
     };
   }
 
   // ---------- Tripo Iwang ----------
   async loadTripo(url) {
-    const gltf = await new GLTFLoader().loadAsync(url);
+    // The model ships as base64 text so it can be served next to the page; decode, then parse the GLB.
+    const txt = await (await fetch(url)).text();
+    const bin = Uint8Array.from(atob(txt.trim()), (c) => c.charCodeAt(0));
+    const gltf = await new GLTFLoader().parseAsync(bin.buffer, '');
     const model = gltf.scene;
     model.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.userData.tripoMat = o.material; o.frustumCulled = false; } });
     const wrap = new THREE.Group();

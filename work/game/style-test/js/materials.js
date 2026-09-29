@@ -53,8 +53,8 @@ function saturate(hex, amt) {
 
 export class Materials {
   constructor() {
-    const wall = makeStone({ kind: 'wall', rows: 7, seed: 11 });
-    const floor = makeStone({ kind: 'floor', rows: 5, seed: 23, moss: 0.3 });
+    const wall = makeStone({ kind: 'wall', rows: 5, seed: 11 });
+    const floor = makeStone({ kind: 'floor', rows: 3, seed: 23, moss: 0.3 });
     const grain = makeGrain({});
     this.tex = { wall, floor, grain };
     this.ramp = toonRamp();

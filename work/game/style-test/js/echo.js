@@ -14,19 +14,19 @@ export class Echo {
     this.camera.position.set(0, 1.55, 3.4);
     this.camera.lookAt(0, 3.2, -40);
     const s = this.scene;
-    s.fog = new THREE.Fog(0xc9d3d8, 60, 700);
+    s.fog = new THREE.Fog(0xc4ccd0, 140, 1100);
     // sky
     const sky = new THREE.Mesh(new THREE.SphereGeometry(900, 24, 12), new THREE.ShaderMaterial({
       side: THREE.BackSide, depthWrite: false, fog: false,
       uniforms: {},
       vertexShader: 'varying vec3 vP; void main(){ vP = normalize(position); gl_Position = projectionMatrix*modelViewMatrix*vec4(position,1.); }',
-      fragmentShader: 'varying vec3 vP; void main(){ float h = clamp(vP.y*1.6, 0., 1.); vec3 c = mix(vec3(0.86,0.88,0.86), vec3(0.62,0.7,0.78), h); gl_FragColor = vec4(c*1.25, 1.); }',
+      fragmentShader: 'varying vec3 vP; void main(){ float h = clamp(vP.y*1.6, 0., 1.); vec3 c = mix(vec3(0.86,0.88,0.86), vec3(0.62,0.7,0.78), h); gl_FragColor = vec4(c*0.95, 1.); }',
     }));
     s.add(sky);
-    s.add(new THREE.HemisphereLight(0xe8eef2, 0x8a8478, 1.6));
+    s.add(new THREE.HemisphereLight(0xe8eef2, 0x6a6458, 1.1));
     const sun = new THREE.DirectionalLight(0xfff4e0, 2.2); sun.position.set(-30, 60, 20); s.add(sun);
-    const tower = new THREE.MeshStandardMaterial({ color: 0xe4ddd0, roughness: 0.7 });
-    const glass = new THREE.MeshStandardMaterial({ color: 0x9fb3bf, roughness: 0.25, metalness: 0.3 });
+    const tower = new THREE.MeshStandardMaterial({ color: 0xc9bfae, roughness: 0.7 });
+    const glass = new THREE.MeshStandardMaterial({ color: 0x6f8595, roughness: 0.25, metalness: 0.3 });
     const green = new THREE.MeshStandardMaterial({ color: 0x7f9a74, roughness: 0.9 });
     const r = rng(41);
     this.towers = [];

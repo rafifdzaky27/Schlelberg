@@ -57,7 +57,7 @@ export class Terrace {
           float h = clamp(vD.y, 0.0, 1.0);
           vec3 c = mix(uHorizon, uTop, pow(h, 0.55));
           float sun = max(dot(vD, uSunDir), 0.0);
-          c += vec3(1.0, 0.85, 0.6) * (pow(sun, 8.0) * 0.35 + pow(sun, 400.0) * 3.0);
+          c += vec3(1.0, 0.85, 0.6) * (pow(sun, 8.0) * 0.2 + pow(sun, 400.0) * 3.0);
           if (vD.y < 0.0) c = uHorizon;
           gl_FragColor = vec4(c, 1.0);
         }`,
@@ -217,7 +217,7 @@ export class Terrace {
     const mk = (fov, p, l) => { const c = new THREE.PerspectiveCamera(fov, 1, 0.2, 2500); c.position.set(...p); c.lookAt(...l); return c; };
     const h = (x, z) => terrainHeight(x, z);
     return {
-      bay: mk(48, [-12, h(-12, -26) + 12, -26], [6, h(6, 20) + 1, 30]),
+      bay: mk(50, [-16, h(-16, -30) + 15, -30], [6, 0, 78]),
       yard: mk(44, [12, h(12, 16) + 3.2, 16], [0, h(0, 3) + 1.4, 2]),
     };
   }
@@ -232,8 +232,8 @@ export class Terrace {
     this.hemi.color.setHex(t.hemi[0]); this.hemi.groundColor.setHex(t.hemi[1]); this.hemi.intensity = t.hemi[2];
     const u = this.sea.material.uniforms;
     u.uToon.value = st.water.toon;
-    u.uDeep.value.setHex(st.mat === 'toon' ? 0x3a7486 : 0x2f5d6e);
-    u.uRefl.value.setHex(t.fog[0]);
+    u.uDeep.value.setHex(st.mat === 'toon' ? 0x2d7b93 : 0x24566a);
+    u.uRefl.value.setHex(t.sky[0]).lerp(new THREE.Color(t.fog[0]), 0.35);
     u.uSunDir.value.copy(this.sunDir); u.uSunPow.value = 1.2;
     u.uLampPow.value = 0; u.uDoorPow.value = 0;
   }

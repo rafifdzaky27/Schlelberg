@@ -79,11 +79,11 @@ export function makeStone({ size = 512, rows = 6, seed = 1, kind = 'wall', moss 
   for (let j = 0; j < rows; j++) {
     const edges = [0];
     let x = 0;
-    const minW = kind === 'wall' ? size / 5 : size / 4;
+    const minW = kind === 'wall' ? size / 3.2 : size / 2.6;
     while (x < size) { x += minW * (0.7 + r() * 0.9); edges.push(Math.min(x, size)); }
     edges[edges.length - 1] = size;
     rowsEdges.push({ edges, off: r() * size });
-    rowTone.push(edges.map(() => 0.8 + r() * 0.35));
+    rowTone.push(edges.map(() => 0.72 + r() * 0.45));
   }
   const mortar = kind === 'wall' ? 5 : 4;
   const cc = canvas(size), ctx = cc.getContext('2d');
@@ -101,7 +101,7 @@ export function makeStone({ size = 512, rows = 6, seed = 1, kind = 'wall', moss 
       const dxe = Math.min(xx - edges[k], edges[k + 1] - xx);
       const dye = Math.min(ly, rowH - ly);
       // wobble the joints so they don't look ruled
-      const wob = (fbm(n, x / size * 16, y / size * 16, 3) - 0.5) * 6;
+      const wob = (fbm(n, x / size * 12, y / size * 12, 3) - 0.5) * 16;
       const d = Math.min(dxe, dye) + wob;
       const inMortar = d < mortar;
       const grain = fbm(n2, x / size * 64, y / size * 64, 3);
