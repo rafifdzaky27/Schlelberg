@@ -38,8 +38,9 @@ export function canStand(x, z, fromY) {
 }
 export const OBSTACLES = [];
 
-export function buildWorld(scene) {
+export function buildWorld(scene, stones) {
   const W = {};
+  STONES = stones; // chiselled block variants made in Blender (blender/stones.py)
   scene.background = new THREE.Color(0x1a1410);
   scene.fog = new THREE.FogExp2(0x2a1f17, 0.035);
   const geo = blockGeo();
@@ -87,7 +88,7 @@ export function buildWorld(scene) {
   rev.push({ x: 0, y: DOOR.y0 + DOOR.h + 0.2, z: DOOR.z + 0.2, sx: DOOR.w + 0.9, sy: 0.42, sz: 0.5, ry: 0, tilt: 0 });
   rev.push({ x: 0, y: DOOR.y0 - 0.18, z: DOOR.z + 0.55, sx: DOOR.w + 1.0, sy: 0.36, sz: 1.3, ry: 0, tilt: 0 }); // the step: its top is the door's sill
   wallBlocks.push(...rev);
-  W.walls = instBlocks(geo, wallBlocks, STONE, scene);
+  W.walls = instBlocks('wall', wallBlocks, STONE, scene);
   // dried mud still crusted along the foot of the black surface (Chapter 1)
   const mud = new THREE.Mesh(new THREE.BoxGeometry(DOOR.w, 0.22, 0.08), toon(0x4a3524)); mud.position.set(0, DOOR.y0 + 0.1, DOOR.z + 0.04); scene.add(mud);
 
@@ -111,7 +112,7 @@ export function buildWorld(scene) {
     const top = Math.min(STAIR.rise, (k + 1) * 0.25);
     flags.push({ x: 0, y: top - 0.35, z, sx: STAIR.x * 2, sy: 0.7, sz: 0.36, ry: 0, tilt: (r() - 0.5) * 0.02 });
   }
-  W.floor = instBlocks(geo, flags, [0x9b8e78, 0x8e826d, 0xa69880, 0x857a66], scene, false);
+  W.floor = instBlocks('slab', flags, [0x9b8e78, 0x8e826d, 0xa69880, 0x857a66], scene, false);
   // Floor outline with a hole over the sunken area. The hole must sit fully inside the outline,
   // or the triangulation silently drops it; the outline runs under the wall, so R + 0.6 is safe.
   const floorShape = () => {
@@ -126,7 +127,8 @@ export function buildWorld(scene) {
   const dome = new THREE.Mesh(new THREE.SphereGeometry(R + 0.4, 40, 12, 0, Math.PI * 2, 0, Math.PI / 2), toon(0x3d3128, { side: THREE.BackSide }));
   dome.scale.y = 0.42; dome.position.y = 4.7; scene.add(dome);
   // stair ceiling slabs and the opening to daylight
-  for (let z = STAIR.z0; z < STAIR.z1 + 0.5; z += 0.9) { const b = new THREE.Mesh(geo, toon(0x8f836e)); b.scale.set(STAIR.x * 2 + 1.4, 0.5, 0.86); b.position.set(0, heightAt(0, z) + 2.9, z + 0.45); b.castShadow = b.receiveShadow = true; scene.add(b); }
+  const ceil = []; for (let z = STAIR.z0; z < STAIR.z1 + 0.5; z += 0.9) ceil.push({ x: 0, y: heightAt(0, z) + 2.9, z: z + 0.45, sx: STAIR.x * 2 + 1.4, sy: 0.5, sz: 0.86, ry: 0, tilt: 0 });
+  instBlocks('wall', ceil, [0x8f836e, 0x857a66], scene);
   const sky = new THREE.Mesh(new THREE.PlaneGeometry(STAIR.x * 2 + 0.4, 3), new THREE.MeshBasicMaterial({ color: new THREE.Color(0xfff0d2).multiplyScalar(1.8), fog: false }));
   sky.position.set(0, STAIR.rise + 1.2, STAIR.z1 + 0.9); sky.rotation.y = Math.PI; scene.add(sky); W.sky = sky;
 
@@ -178,18 +180,28 @@ export function buildWorld(scene) {
   return W;
 }
 
-// Many rounded blocks in one draw call, each with its own stone tone.
-function instBlocks(geo, list, palette, scene, cast = true) {
-  const m = new THREE.InstancedMesh(geo, toon(0xffffff), list.length);
+let STONES = null;
+// Blocks drawn with the Blender stone variants, one draw call per variant, each block its own tone.
+function instBlocks(kind, list, palette, scene, cast = true) {
+  const variants = (STONES && STONES[kind] && STONES[kind].length) ? STONES[kind] : [blockGeo()];
+  const groups = variants.map(() => []);
+  list.forEach((b) => groups[Math.floor(r() * variants.length)].push(b));
+  const mat = toon(0xffffff);
   const mx = new THREE.Matrix4(), q = new THREE.Quaternion(), e = new THREE.Euler(), c = new THREE.Color();
-  list.forEach((b, i) => {
-    e.set(b.tilt, b.ry, b.tilt * 0.5); q.setFromEuler(e);
-    mx.compose(new THREE.Vector3(b.x, b.y, b.z), q, new THREE.Vector3(b.sx, b.sy, b.sz));
-    m.setMatrixAt(i, mx);
-    c.setHex(palette[Math.floor(r() * palette.length)]).multiplyScalar(0.9 + r() * 0.18);
-    m.setColorAt(i, c);
+  const meshes = groups.map((g, vi) => {
+    const m = new THREE.InstancedMesh(variants[vi], mat, Math.max(1, g.length));
+    m.count = g.length;
+    g.forEach((b, i) => {
+      // flip some blocks so the same variant never shows the same face twice in a row
+      e.set(b.tilt, b.ry + (r() < 0.5 ? Math.PI : 0), b.tilt * 0.5); q.setFromEuler(e);
+      mx.compose(new THREE.Vector3(b.x, b.y, b.z), q, new THREE.Vector3(b.sx, b.sy, b.sz));
+      m.setMatrixAt(i, mx);
+      c.setHex(palette[Math.floor(r() * palette.length)]).multiplyScalar(0.9 + r() * 0.18);
+      m.setColorAt(i, c);
+    });
+    m.castShadow = cast; m.receiveShadow = true;
+    scene.add(m);
+    return m;
   });
-  m.castShadow = cast; m.receiveShadow = true;
-  scene.add(m);
-  return m;
+  return meshes;
 }

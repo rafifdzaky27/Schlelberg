@@ -81,7 +81,7 @@ const Ink = {
         e = max(e, smoothstep(0.35, 0.8, 1.0 - dot(nc, nrm(vUv + o))));
       }
       float fade = smoothstep(-40.0, -6.0, dc); // outlines thin out with distance
-      col = mix(col, uInk * col * 0.6 + uInk * 0.2, e * uStrength * fade);
+      col = mix(col, uInk * col * 0.6 + uInk * 0.2, e * uStrength * fade * 0.0); // outlines off: they showed through walls and the door
       // grade: lift shadows toward warm brown, keep highlights creamy
       float l = dot(col, vec3(0.299, 0.587, 0.114));
       col = mix(col, col * vec3(1.06, 1.0, 0.9) + vec3(0.025, 0.018, 0.01), 0.6);
@@ -114,18 +114,7 @@ export class Look {
     this.ink.uniforms.uRes.value.set(w * pr, h * pr);
   }
   render(scene, camera, t, hidden = []) {
-    // normals + depth for the outlines (transparent things like water and light are left out)
-    const was = hidden.map((o) => o.visible); // restore each object's own visibility afterwards
-    hidden.forEach((o) => (o.visible = false));
-    const bg = scene.background, fog = scene.fog;
-    scene.background = null; scene.fog = null;
-    scene.overrideMaterial = this.normalMat;
-    this.renderer.setRenderTarget(this.gbuf);
-    this.renderer.clear();
-    this.renderer.render(scene, camera);
-    this.renderer.setRenderTarget(null);
-    scene.overrideMaterial = null; scene.background = bg; scene.fog = fog;
-    hidden.forEach((o, i) => (o.visible = was[i]));
+    // (the outline pre-pass was removed: its edges showed through walls and the door)
     this.ink.uniforms.uNear.value = camera.near; this.ink.uniforms.uFar.value = camera.far;
     this.ink.uniforms.uTime.value = t;
     this.renderPass.scene = scene; this.renderPass.camera = camera;

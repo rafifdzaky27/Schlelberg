@@ -6,3 +6,6 @@ facing, camera drift, animation state, root slide, what sits above the pit floor
 sequence (echo, live, Iwang, closing).
 
 Run it with the scene served on port 8766 and three.js 0.180.0 installed where the script's `T` path points.
+
+Serve with `node qa/cspserve.mjs . 8767`: it adds a Content-Security-Policy like the artifact page's, so the
+test sees the same blocked loads a real viewer does (this is how the untextured-models bug was reproduced).

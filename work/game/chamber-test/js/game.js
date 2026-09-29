@@ -21,11 +21,15 @@ renderer.toneMappingExposure = 1.25;
 $('stage').appendChild(renderer.domElement);
 const look = new Look(renderer);
 const scene = new THREE.Scene();
-const W = buildWorld(scene);
+let W = null; // built once the Blender stones have loaded (see boot)
 const camera = new THREE.PerspectiveCamera(52, 1, 0.05, 90);
 
 // ---------- loading models shipped as base64 text ----------
 const loader = new GLTFLoader();
+// The artifact page's security policy blocks fetch() of blob: URLs, which GLTFLoader's ImageBitmapLoader
+// uses for embedded textures, so every Tripo model came out untextured (white). Load them as plain
+// <img> elements instead; blob: images are allowed.
+loader.register((parser) => { parser.textureLoader = new THREE.TextureLoader(parser.options.manager); parser.textureLoader.setCrossOrigin(parser.options.crossOrigin); return { name: 'img-textures' }; });
 async function loadModel(name) {
   const txt = await (await fetch(`assets/${name}.b64.txt`)).text();
   const bin = Uint8Array.from(atob(txt.trim()), (c) => c.charCodeAt(0));
@@ -42,6 +46,18 @@ function stripRootMotion(clip) {
     for (let i = 0; i < v.length; i += 3) v[i + 1] = v[1];
   }
   return clip;
+}
+
+// Tripo rigs face +X. Measure the toe direction and turn the model so it faces +Z, the way our code walks.
+function faceForward(model) {
+  model.updateMatrixWorld(true);
+  let foot = null, toe = null;
+  model.traverse((o) => { if (o.isBone && o.name === 'L_Foot') foot = o; if (o.isBone && o.name === 'L_ToeBase') toe = o; });
+  if (!foot || !toe) return 0;
+  const a = new THREE.Vector3().setFromMatrixPosition(foot.matrixWorld), b = new THREE.Vector3().setFromMatrixPosition(toe.matrixWorld);
+  const ang = Math.atan2(b.x - a.x, b.z - a.z); // angle of the toes from +Z
+  model.rotation.y -= ang;
+  return ang;
 }
 
 // Scale a model to a height, stand it on the ground, centre it.
@@ -68,9 +84,8 @@ const doorMat = new THREE.ShaderMaterial({
       vec2 uv = vUv; float t = uTime;
       // dormant: black that does not reflect the lamp, with a slow oily sheen crawling over it
       float sheen = n(uv * vec2(3., 5.) + vec2(t * 0.05, -t * 0.08)) * n(uv * 11. - t * 0.1);
-      vec3 col = vec3(0.006, 0.007, 0.012) + vec3(0.05, 0.065, 0.095) * smoothstep(0.55, 0.9, sheen);
-      // a slow vertical ripple, as if the surface were dark water standing upright
-      col += vec3(0.02, 0.025, 0.04) * smoothstep(0.82, 1.0, sin(uv.y * 18.0 - t * 1.1 + n(uv * 3.0) * 4.0));
+      vec3 col = vec3(0.006, 0.007, 0.012) + vec3(0.03, 0.04, 0.06) * smoothstep(0.6, 0.95, sheen);
+
       // faint cold rim where the black meets the frame
       float edge = min(min(uv.x, 1.0 - uv.x) * 2.2, min(uv.y, 1.0 - uv.y) * 1.6);
       col += vec3(0.25, 0.35, 0.5) * (1.0 - smoothstep(0.0, 0.08, edge)) * 0.35;
@@ -136,7 +151,7 @@ function echoUpdate(dt) {
   echo.hinge[0].rotation.z = -bow * 0.35; echo.hinge[1].rotation.z = bow * 0.35; echo.hinge.forEach((g) => (g.position.y = -bow * 4));
   for (const f of echo.fallers) if (t > 13 + f.d) { f.m.visible = true; if (!f.v) f.m.position.set(f.x, 32, -75); f.v += dt * 9.8; f.m.position.y -= f.v * dt; f.m.rotation.z += dt * 2; }
   if (echo.future && echo.futureMixer) echo.futureMixer.update(dt);
-  renderer.setRenderTarget(echo.rt); renderer.render(echo.scene, echo.cam); renderer.setRenderTarget(null);
+  if (!paused) { renderer.setRenderTarget(echo.rt); renderer.render(echo.scene, echo.cam); renderer.setRenderTarget(null); }
 }
 function echoReset() { echo.t = 0; echo.hinge.forEach((g) => { g.rotation.z = 0; g.position.y = 0; }); echo.fallers.forEach((f) => { f.v = 0; f.m.visible = false; }); }
 
@@ -205,7 +220,7 @@ async function loadProps() {
   }
   // lamps on their stands, with three flames each
   const lamp = (await loadModel('lamp')).scene; toonify(lamp);
-  for (const p of W.lampSpots) { const g = fit(lamp.clone(), 0.18); g.scale.multiplyScalar(1.6); g.position.set(p.x, p.y - 0.06, p.z); scene.add(g); addFlames(p.clone().add(new THREE.Vector3(0, 0.12, 0))); }
+  for (const p of W.lampSpots) { const g = fit(lamp.clone(), 0.18); g.traverse((o) => { if (o.isMesh) o.castShadow = false; }); g.scale.multiplyScalar(1.6); g.position.set(p.x, p.y - 0.06, p.z); scene.add(g); addFlames(p.clone().add(new THREE.Vector3(0, 0.12, 0))); }
   // the carved doorway around the black surface
   const portal = (await loadModel('portal')).scene; toonify(portal);
   // Tripo may hand the frame back turned sideways: face its wide side to the room
@@ -229,6 +244,7 @@ async function loadTobious() {
   try { gltf = await loadModel('tobious'); } catch (e) { return; }
   const model = gltf.scene; toonify(model);
   model.traverse((o) => { if (o.isMesh) o.frustumCulled = false; });
+  faceForward(model);
   const g = fit(model, 1.75);
   scene.remove(stand); scene.add(g); tobi = g;
   if (gltf.animations.length) {
@@ -276,6 +292,7 @@ async function loadIwang() {
     m.clippingPlanes = [new THREE.Plane(new THREE.Vector3(0, 0, 1), -DOOR.z)];
     o.material = m; o.castShadow = true; o.frustumCulled = false;
   });
+  faceForward(model);
   const g = fit(model, 2.6);
   g.visible = false; scene.add(g);
   iw.root = g; iw.model = model;
@@ -290,7 +307,7 @@ const clampPos = new THREE.Vector3(DOOR.w / 2 - 0.2, SUNK.y, DOOR.z + 1.3);
 const S = { state: 'dormant', t: 0, open: 0, draft: 0, cut: 0, sub: null, cardShown: false };
 function setState(s) { S.state = s; S.t = 0; }
 function resetScene() {
-  setState('dormant'); S.open = 0; S.draft = 0; S.cut = 0; S.cardShown = false; S.sub = null;
+  setState('dormant'); S.open = 0; S.draft = 0; S.cut = 0; S.cardShown = false; S.sub = null; S.orderT = 0; S.described = false; S.descT = 0;
   iw.mode = 'hidden'; if (iw.root) iw.root.visible = false; echoReset();
   player.pos.set(0, 0, STAIR.z1 - 0.6); player.pos.y = heightAt(0, player.pos.z); player.yaw = Math.PI;
   cam.intro = 0;
@@ -418,7 +435,8 @@ function update(dt, t) {
   if (cam.mode === 'follow') { if (keys.has('arrowleft')) cam.yaw += dt * 1.9; if (keys.has('arrowright')) cam.yaw -= dt * 1.9; }
   let speed = 0;
   if (!(f || s)) moveBasis = null; // fixed cameras: keep the direction until the keys are released
-  if ((f || s) && cam.intro >= INTRO[2][0]) {
+  const frozen = S.state === 'echo' || S.state === 'dark';
+  if ((f || s) && cam.intro >= INTRO[2][0] && !frozen) {
     // follow camera: steer by the camera's intended angle, so the camera catching up can't bend the path
     const fw = new THREE.Vector3();
     if (cam.mode === 'follow') fw.set(Math.sin(cam.yaw), 0, Math.cos(cam.yaw));
@@ -449,22 +467,35 @@ function update(dt, t) {
   const st = S.state;
   if (st === 'echo') {
     S.open = Math.min(1, S.t / 3.5); doorU.uState.value = 1; echoUpdate(dt);
-    const lines = [[6, 13, "Don't go with him."], [15, 25, "Tobi. Listen. They aren't looking for stores."], [27, 37, 'That door is what they came for. And now they know you can open it.']];
+    const lines = [
+      [0, 2.6, '', 'You scrape the packed mud from behind the clamp. Your cut knuckles leave a smear of blood on the stone.'],
+      [2.6, 5.2, '', 'The humming stops. The water around your feet goes still. A line of light opens at the height of your face.'],
+      [6, 13, 'A MAN WITH YOUR FACE', "Don't go with him."],
+      [15, 25, 'A MAN WITH YOUR FACE', "Tobi. Listen. They aren't looking for stores."],
+      [27, 37, 'A MAN WITH YOUR FACE', 'That door is what they came for. And now they know you can open it.'],
+    ];
     const cur = lines.find(([a, b]) => S.t > a && S.t < b);
-    S.sub = cur ? ['A MAN WITH YOUR FACE', cur[2]] : (S.t < 5 ? ['', 'The water around your feet goes still.'] : null);
+    S.sub = cur ? [cur[2], cur[3]] : null;
     if (S.t > ECHO_SECONDS) setState('dark');
   } else if (st === 'dark') {
     S.open = Math.max(0, S.open - dt * 1.3); if (S.open === 0) doorU.uState.value = 0;
-    S.sub = S.t > 0.8 ? ['', 'Someone forces the clamp back into its recess. Metal clicks against metal.'] : null;
+    S.sub = S.t > 0.6 ? ['', 'The picture is gone. Darran, the overseer, shoves the broken clamp back into its recess. Metal clicks against metal.'] : null;
     if (S.t > 3.4) { setState('live'); S.cut = 5.5; S.sub = null; }
   } else if (st === 'live') {
     doorU.uState.value = 2; S.open = Math.min(1, S.open + dt * 0.45);
-    S.sub = S.t > 0.8 && S.t < 4.2 ? ['', 'This time the water moves.'] : null;
+    S.sub = S.t > 0.8 && S.t < 4.6 ? ['', 'This time the water moves. The air pulls toward the door, and something on the other side comes with it.'] : null;
     if (S.t > 2.2 && iw.mode === 'hidden' && iw.root) { iw.mode = 'emerge'; iw.pos.set(0.1, SUNK.y, DOOR.z - 1.4); iw.yaw = 0; iw.t = 0; }
   } else if (st === 'closing') {
     S.open = Math.max(0, S.open - dt * 0.35);
     if (S.open <= 0.001) { doorU.uState.value = 0; setState('dormant'); }
-  } else { doorU.uState.value = 0; S.sub = null; }
+  } else {
+    doorU.uState.value = 0; S.sub = null;
+    const since = cam.intro >= INTRO[2][0] ? (S.orderT = (S.orderT || 0) + dt) : 0;
+    if (since > 0.5 && since < 7) S.sub = ['DARRAN, THE OVERSEER', 'Get down to the black door and clear the mud from its clamp.'];
+    const nearDoor = Math.hypot(player.pos.x, player.pos.z - DOOR.z) < 3.6;
+    if (nearDoor && !S.described) { S.described = true; S.descT = 6; }
+    if (S.descT > 0) { S.descT -= dt; S.sub = ['', 'A black surface inside a stone frame. No hinges, no handle. It does not reflect the lamp.']; }
+  }
   S.cut = Math.max(0, S.cut - dt);
   doorU.uOpen.value = S.open; doorU.uTime.value = t;
   const live = (st === 'live' || st === 'closing') ? S.open : 0;
@@ -575,7 +606,7 @@ resize();
 const clock = new THREE.Clock();
 let t = 0;
 let paused = false;
-const hideFromInk = [dust, W.shaft, W.waterMain, W.waterSunk, W.sky];
+const hideFromInk = [dust];
 function tick(dt) { t += dt; update(dt, t); updateCamera(dt); }
 function frame() {
   const dt = Math.min(0.05, clock.getDelta());
@@ -584,8 +615,18 @@ function frame() {
   requestAnimationFrame(frame);
 }
 
-// boot: show the room at once, fill in models as they arrive
+// boot: build the room from the Blender stones, then fill in the Tripo models as they arrive
 cam.pos.copy(INTRO[0][1]); cam.look.copy(INTRO[0][2]);
+{
+  const stones = { wall: [], slab: [] };
+  try {
+    const g = await loadModel('stones');
+    g.scene.traverse((o) => { if (o.isMesh) { const k = o.name.startsWith('slab') ? 'slab' : 'wall'; stones[k].push(o.geometry); } });
+  } catch (e) { console.warn('stones not loaded, using plain blocks', e); }
+  W = buildWorld(scene, stones);
+  W.shaft.userData.noInk = true;
+  hideFromInk.push(W.shaft, W.waterMain, W.waterSunk, W.sky);
+}
 requestAnimationFrame(frame);
 Promise.all([loadProps(), loadTobious(), loadIwang()]).then(() => {
   $('loading').classList.add('done');
