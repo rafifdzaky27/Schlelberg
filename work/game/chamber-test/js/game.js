@@ -3,8 +3,10 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 import { Look, toon, toonify, RAMP } from './look.js';
-import { buildWorld, heightAt, canStand, OBSTACLES, R, SUNK, DOOR, STAIR } from './world.js';
+import { buildWorld, heightAt, waterY, canStand, OBSTACLES, R, SUNK, DOOR, STAIR } from './world.js';
 import { addRipple } from './water.js';
+import { Splash, footTracker } from './splash.js';
+import { Sound, VOICE } from './audio.js';
 
 const $ = (id) => document.getElementById(id);
 const hashOpts = (location.hash || '').slice(1).split('.');
@@ -23,6 +25,8 @@ const look = new Look(renderer);
 const scene = new THREE.Scene();
 let W = null; // built once the Blender stones have loaded (see boot)
 const camera = new THREE.PerspectiveCamera(52, 1, 0.05, 90);
+const splash = new Splash(scene);
+const sound = new Sound();
 
 // ---------- loading models shipped as base64 text ----------
 const loader = new GLTFLoader();
@@ -145,7 +149,7 @@ doorU.uEcho.value = echo.rt.texture;
   const ground = new THREE.Mesh(new THREE.PlaneGeometry(40, 30), toon(0xbdb5a6, { map: null })); ground.rotation.x = -Math.PI / 2; ground.position.z = -8; s.add(ground);
 }
 function echoUpdate(dt) {
-  echo.t += dt; const t = echo.t;
+  echo.t += dt; const t = Math.max(0, echo.t - ECHO_OPEN); // the city's events start when the surface opens
   echo.carriage.position.set(-200 + ((t * 45) % 420), 64, -150);
   const bow = THREE.MathUtils.smoothstep(t, 10, 17);
   echo.hinge[0].rotation.z = -bow * 0.35; echo.hinge[1].rotation.z = bow * 0.35; echo.hinge.forEach((g) => (g.position.y = -bow * 4));
@@ -236,7 +240,7 @@ async function loadProps() {
 // ---------- characters ----------
 const player = { pos: new THREE.Vector3(0, 0, STAIR.z1 - 0.6), yaw: Math.PI, speed: 0 };
 player.pos.y = heightAt(player.pos.x, player.pos.z);
-let tobi = null, tobiMix = null, tobiAct = {}, tobiCur = 'idle';
+let tobi = null, tobiMix = null, tobiAct = {}, tobiCur = 'idle', tobiFeet = null;
 const stand = new THREE.Group(); // stand-in until the model arrives
 { const b = new THREE.Mesh(new THREE.CapsuleGeometry(0.22, 1.1, 4, 10), toon(0xd8cbb0)); b.position.y = 0.8; stand.add(b); scene.add(stand); }
 async function loadTobious() {
@@ -247,6 +251,7 @@ async function loadTobious() {
   faceForward(model);
   const g = fit(model, 1.75);
   scene.remove(stand); scene.add(g); tobi = g;
+  tobiFeet = footTracker(model);
   if (gltf.animations.length) {
     tobiMix = new THREE.AnimationMixer(model);
     for (const c of gltf.animations) tobiAct[c.name] = tobiMix.clipAction(stripRootMotion(c));
@@ -295,20 +300,31 @@ async function loadIwang() {
   faceForward(model);
   const g = fit(model, 2.6);
   g.visible = false; scene.add(g);
-  iw.root = g; iw.model = model;
+  iw.root = g; iw.model = model; iw.feet = footTracker(model);
   iw.mix = new THREE.AnimationMixer(model);
   for (const c of gltf.animations) iw.act[c.name] = iw.mix.clipAction(stripRootMotion(c));
   iw.act.idle && iw.act.idle.play();
 }
 
 // ---------- the sequence ----------
-const ECHO_SECONDS = 41;
+const ECHO_SECONDS = 39;
+const ECHO_OPEN = 11.5; // the line of light opens as the narrator says so
+// [start second, voice clip, speaker, subtitle]; each subtitle stays up for its clip's length
+const ECHO_LINES = [
+  [0.4, 'knuckle', '', 'You scrape the packed mud from behind the clamp. Your cut knuckles leave a smear of blood on the stone.'],
+  [7.0, 'hum', '', 'The humming stops. The water around your feet goes still. A line of light opens at the height of your face.'],
+  [15.6, 'future1', 'A MAN WITH YOUR FACE', "Don't go with him."],
+  [20.4, 'future2', 'A MAN WITH YOUR FACE', "Tobi. Listen. They aren't looking for stores."],
+  [27.2, 'future3', 'A MAN WITH YOUR FACE', 'That door is what they came for. And now they know you can open it.'],
+];
+// play a clip once per state; the game never plays sound while the test harness fast-forwards it
+function cue(key, name) { if (S.said.has(key)) return; S.said.add(key); if (!paused) sound.say(name); }
 const clampPos = new THREE.Vector3(DOOR.w / 2 - 0.2, SUNK.y, DOOR.z + 1.3);
-const S = { state: 'dormant', t: 0, open: 0, draft: 0, cut: 0, sub: null, cardShown: false };
-function setState(s) { S.state = s; S.t = 0; }
+const S = { state: 'dormant', t: 0, open: 0, draft: 0, cut: 0, sub: null, cardShown: false, said: new Set() };
+function setState(s) { S.state = s; S.t = 0; S.said = new Set(); }
 function resetScene() {
   setState('dormant'); S.open = 0; S.draft = 0; S.cut = 0; S.cardShown = false; S.sub = null; S.orderT = 0; S.described = false; S.descT = 0;
-  iw.mode = 'hidden'; if (iw.root) iw.root.visible = false; echoReset();
+  iw.mode = 'hidden'; if (iw.root) iw.root.visible = false; echoReset(); sound.stopVoice();
   player.pos.set(0, 0, STAIR.z1 - 0.6); player.pos.y = heightAt(0, player.pos.z); player.yaw = Math.PI;
   cam.intro = 0;
 }
@@ -370,14 +386,14 @@ const keys = new Set();
 function interactKey(k) {
   if (k === 'e') interact();
   if (k === ' ' && S.state === 'live') setState('closing');
-  if (k === 'enter' && S.state === 'echo') S.t = ECHO_SECONDS;
+  if (k === 'enter' && S.state === 'echo') { S.t = ECHO_SECONDS; sound.stopVoice(); }
 }
 addEventListener('keydown', (e) => {
-  const k = e.key.toLowerCase(); keys.add(k);
+  const k = e.key.toLowerCase(); keys.add(k); sound.unlock();
   if (cam.intro < INTRO[2][0] && (k.length === 1 || k === 'enter' || k === ' ')) cam.intro = INTRO[2][0];
   if (k === 'e') interact();
   if (k === ' ') { if (S.state === 'live') setState('closing'); e.preventDefault(); }
-  if (k === 'enter' && S.state === 'echo') S.t = ECHO_SECONDS;
+  if (k === 'enter' && S.state === 'echo') { S.t = ECHO_SECONDS; sound.stopVoice(); }
   if (k === 'r') resetScene();
   if (k === 'c') cam.mode = cam.mode === 'follow' ? 'fixed' : 'follow';
   if (k === 'q') { low = !low; resize(); }
@@ -390,6 +406,7 @@ let drag = null;
 // Mouse look: click to lock the pointer (Esc releases it), or hold and drag.
 function turn(dx, dy) { cam.yaw -= dx * 0.0035; cam.pitch = THREE.MathUtils.clamp(cam.pitch + dy * 0.0028, 0.05, 1.0); }
 renderer.domElement.addEventListener('pointerdown', (e) => {
+  sound.unlock();
   if (cam.intro < INTRO[2][0]) cam.intro = INTRO[2][0];
   if (document.pointerLockElement !== renderer.domElement && renderer.domElement.requestPointerLock) {
     try { const pr = renderer.domElement.requestPointerLock(); if (pr && pr.catch) pr.catch(() => {}); } catch (err) { /* not available: drag instead */ }
@@ -461,29 +478,26 @@ function update(dt, t) {
     if (tobiAct.walk) tobiAct.walk.timeScale = speed / 1.4;
     tobiMix.update(dt);
   }
-  if (speed > 0 && Math.random() < dt * 5) { const w = player.pos.z < SUNK.z1 ? W.waterSunk : W.waterMain; addRipple(w.material, player.pos.x, player.pos.z, t, 0.9); }
+  if (tobiFeet) for (const f of tobiFeet.step(heightAt)) footSplash(f, speed > 2 ? 1.2 : 0.8, t);
 
   // door states
   const st = S.state;
   if (st === 'echo') {
-    S.open = Math.min(1, S.t / 3.5); doorU.uState.value = 1; echoUpdate(dt);
-    const lines = [
-      [0, 2.6, '', 'You scrape the packed mud from behind the clamp. Your cut knuckles leave a smear of blood on the stone.'],
-      [2.6, 5.2, '', 'The humming stops. The water around your feet goes still. A line of light opens at the height of your face.'],
-      [6, 13, 'A MAN WITH YOUR FACE', "Don't go with him."],
-      [15, 25, 'A MAN WITH YOUR FACE', "Tobi. Listen. They aren't looking for stores."],
-      [27, 37, 'A MAN WITH YOUR FACE', 'That door is what they came for. And now they know you can open it.'],
-    ];
-    const cur = lines.find(([a, b]) => S.t > a && S.t < b);
+    S.open = THREE.MathUtils.clamp((S.t - ECHO_OPEN) / 3.5, 0, 1); doorU.uState.value = 1;
+    if (S.t > ECHO_OPEN - 0.5) echoUpdate(dt);
+    for (const [at, clip] of ECHO_LINES) if (S.t > at && S.t < at + 0.5) cue(clip, clip);
+    const cur = ECHO_LINES.find(([at, clip]) => S.t > at && S.t < at + VOICE[clip] + 0.5);
     S.sub = cur ? [cur[2], cur[3]] : null;
     if (S.t > ECHO_SECONDS) setState('dark');
   } else if (st === 'dark') {
     S.open = Math.max(0, S.open - dt * 1.3); if (S.open === 0) doorU.uState.value = 0;
+    if (S.t > 0.6) cue('dark', 'dark');
     S.sub = S.t > 0.6 ? ['', 'The picture is gone. Darran, the overseer, shoves the broken clamp back into its recess. Metal clicks against metal.'] : null;
-    if (S.t > 3.4) { setState('live'); S.cut = 5.5; S.sub = null; }
+    if (S.t > 0.6 + VOICE.dark + 0.5) { setState('live'); S.cut = 5.5; S.sub = null; }
   } else if (st === 'live') {
     doorU.uState.value = 2; S.open = Math.min(1, S.open + dt * 0.45);
-    S.sub = S.t > 0.8 && S.t < 4.6 ? ['', 'This time the water moves. The air pulls toward the door, and something on the other side comes with it.'] : null;
+    if (S.t > 0.8) cue('live', 'live');
+    S.sub = S.t > 0.8 && S.t < 0.8 + VOICE.live + 0.4 ? ['', 'This time the water moves. The air pulls toward the door, and something on the other side comes with it.'] : null;
     if (S.t > 2.2 && iw.mode === 'hidden' && iw.root) { iw.mode = 'emerge'; iw.pos.set(0.1, SUNK.y, DOOR.z - 1.4); iw.yaw = 0; iw.t = 0; }
   } else if (st === 'closing') {
     S.open = Math.max(0, S.open - dt * 0.35);
@@ -491,9 +505,10 @@ function update(dt, t) {
   } else {
     doorU.uState.value = 0; S.sub = null;
     const since = cam.intro >= INTRO[2][0] ? (S.orderT = (S.orderT || 0) + dt) : 0;
-    if (since > 0.5 && since < 7) S.sub = ['DARRAN, THE OVERSEER', 'Get down to the black door and clear the mud from its clamp.'];
+    if (since > 0.5 && since < 1) cue('darran', 'darran');
+    if (since > 0.5 && since < 0.5 + VOICE.darran + 1.2) S.sub = ['DARRAN, THE OVERSEER', 'Get down to the black door and clear the mud from its clamp.'];
     const nearDoor = Math.hypot(player.pos.x, player.pos.z - DOOR.z) < 3.6;
-    if (nearDoor && !S.described) { S.described = true; S.descT = 6; }
+    if (nearDoor && !S.described) { S.described = true; S.descT = VOICE.door + 0.6; S.said.delete('door'); cue('door', 'door'); }
     if (S.descT > 0) { S.descT -= dt; S.sub = ['', 'A black surface inside a stone frame. No hinges, no handle. It does not reflect the lamp.']; }
   }
   S.cut = Math.max(0, S.cut - dt);
@@ -530,6 +545,20 @@ function update(dt, t) {
     u.uDoorPos.value.set(0, DOOR.y0 + 1.1, DOOR.z); u.uDoorPow.value = W.doorLight.intensity / 30;
   }
 
+  // water spilling over the step edges throws up a fine spray (almost none while the echo stills it)
+  const calm = W.waterSunk.material.uniforms.uCalm.value;
+  W.fallMat.uniforms.uTime.value = t; W.fallMat.uniforms.uCalm.value = calm;
+  for (const f of W.falls) {
+    const n = Math.floor(dt * 30 * (1 - calm) + Math.random());
+    for (let k = 0; k < n; k++) {
+      const x = (Math.random() * 2 - 1) * (SUNK.x - 0.15);
+      splash.drop(x, f.bottom + 0.01, f.z - 0.03, (Math.random() - 0.5) * 0.3, 0.5 + Math.random() * 0.7, -0.2 - Math.random() * 0.4, 0.5, 0.012 + Math.random() * 0.012, f.bottom - 0.02);
+    }
+  }
+  const dFall = Math.hypot(Math.max(0, Math.abs(player.pos.x) - SUNK.x), player.pos.z - (SUNK.z1 - 0.36));
+  if (!paused) sound.trickle(0.05 * (1 - calm) / (1 + dFall * dFall * 0.25));
+  splash.update(dt);
+
   updateIwang(dt, t);
 
   // hints and subtitles
@@ -546,6 +575,17 @@ function update(dt, t) {
   look.ink.uniforms.uRewind.value = rewindT > 0 ? Math.min(1, rewindT) : 0;
 }
 
+const IW_MAX_Z = SUNK.z1 - 3 * 0.36 - 0.25; // the foot of the bottom step, minus the Iwang's reach
+// a foot landing in water: droplets, a ripple ring, a splash sound
+function footSplash(f, strength, t) {
+  if (heightAt(f.x, f.z) > 0.01 || strength <= 0.05) return; // dry stair treads
+  const y = waterY(f.x, f.z);
+  const inPit = Math.abs(f.x) < SUNK.x && f.z < SUNK.z1 && f.z > SUNK.z0;
+  splash.burst(f.x, y, f.z, strength);
+  addRipple((inPit ? W.waterSunk : W.waterMain).material, f.x, f.z, t, Math.min(1.2, 0.8 * strength));
+  if (!paused) sound.splash(strength, camera.position.distanceTo(f));
+  S.splashes = (S.splashes || 0) + 1;
+}
 function updateIwang(dt, t) {
   if (!iw.root) return;
   iwU.uTime.value = t;
@@ -560,7 +600,8 @@ function updateIwang(dt, t) {
     if (iw.t > 0.8) { speed = 0.6; p.z += speed * dt; }
     if (p.z > DOOR.z + 1.5) iw.mode = 'prowl';
   } else if (iw.mode === 'prowl') {
-    const tx = Math.sin(iw.t * 0.35) * 1.0, tz = THREE.MathUtils.clamp(player.pos.z, DOOR.z + 1.2, SUNK.z1 - 0.8);
+    // it keeps to the pit floor: the steps up to the hall are out of its reach (it goes only where the current feeds it)
+    const tx = Math.sin(iw.t * 0.35) * 1.0, tz = THREE.MathUtils.clamp(player.pos.z, DOOR.z + 1.2, IW_MAX_Z);
     const dx = tx - p.x, dz = tz - p.z, dist = Math.hypot(dx, dz);
     if (near < 2.1 && iw.coh > 0.75) { iw.mode = 'windup'; iw.mt = 0; }
     else if (dist > 0.3) { speed = 0.55; p.x += dx / dist * speed * dt; p.z += dz / dist * speed * dt; }
@@ -570,7 +611,7 @@ function updateIwang(dt, t) {
     if (iw.mt > 1.0) { iw.mode = 'strike'; iw.mt = 0; }
   } else if (iw.mode === 'strike') {
     iw.mt += dt; iw.windup = Math.max(0, 1 - iw.mt * 5); iw.lunge = Math.sin(Math.min(1, iw.mt / 0.35) * Math.PI);
-    if (iw.mt > 0.18 && !iw.hit) { iw.hit = true; if (near < 2.2) rewind(); }
+    if (iw.mt > 0.18 && !iw.hit) { iw.hit = true; footSplash(p.clone().add(new THREE.Vector3(Math.sin(iw.yaw) * 0.9, 0, Math.cos(iw.yaw) * 0.9)), 2.2 * iw.coh, t); if (near < 2.2) rewind(); }
     if (iw.mt > 0.8) { iw.hit = false; iw.lunge = 0; iw.mode = S.state === 'closing' ? 'retreat' : 'prowl'; }
   } else if (iw.mode === 'retreat') {
     iw.windup = 0; speed = 0.95; p.x += (0 - p.x) * dt; p.z -= speed * dt;
@@ -579,7 +620,9 @@ function updateIwang(dt, t) {
   // face the person, or the door when leaving
   const face = iw.mode === 'retreat' ? Math.PI : Math.atan2(player.pos.x - p.x, player.pos.z - p.z);
   iw.yaw += Math.atan2(Math.sin(face - iw.yaw), Math.cos(face - iw.yaw)) * Math.min(1, dt * 2.5);
-  p.y = p.z < DOOR.z + 1.2 ? DOOR.y0 : heightAt(p.x, p.z); // on the step at the door's foot, else the floor
+  // on the sill at the door's foot, else the pit floor; eased so it never snaps between heights
+  const groundY = p.z < DOOR.z + 1.2 ? DOOR.y0 : heightAt(p.x, Math.min(p.z, IW_MAX_Z));
+  p.y += (groundY - p.y) * Math.min(1, dt * 6);
   // it is solid near the live seam and turns to smoke away from it
   const target = p.z < DOOR.z ? 1 : Math.min(1, gradientAt(p) * 1.35);
   iw.coh += (target - iw.coh) * Math.min(1, dt * 2.5);
@@ -592,13 +635,13 @@ function updateIwang(dt, t) {
   if (want !== iw.cur && iw.act[want]) { iw.act[want].reset().fadeIn(0.3).play(); iw.act[iw.cur] && iw.act[iw.cur].fadeOut(0.3); iw.cur = want; }
   if (iw.act.walk) iw.act.walk.timeScale = 0.8;
   iw.mix.update(dt * (1 + iw.windup * 0.8));
-  if (speed > 0 && Math.random() < dt * 4 && p.z > DOOR.z) addRipple(W.waterSunk.material, p.x, p.z, t, 0.7 * iw.coh);
+  if (iw.feet && p.z > DOOR.z + 0.4) for (const f of iw.feet.step(heightAt, 0.4)) footSplash(f, 1.3 * iw.coh, t);
 }
 
 // ---------- size + loop ----------
 function resize() {
   const w = innerWidth, h = innerHeight, pr = Math.min(devicePixelRatio, low ? 0.7 : 1.5);
-  renderer.setPixelRatio(pr); renderer.setSize(w, h); look.setSize(w, h, pr);
+  renderer.setPixelRatio(pr); renderer.setSize(w, h); look.setSize(w, h, pr); splash.setViewport(h, pr);
   camera.aspect = w / h; camera.updateProjectionMatrix();
 }
 addEventListener('resize', resize);
@@ -638,4 +681,4 @@ window.__ct = {
   // run the game at a fixed 60 fps for n frames with these keys held, without drawing
   sim(n, held = []) { paused = true; const prev = new Set(keys); keys.clear(); held.forEach((k) => keys.add(k)); const out = []; for (let i = 0; i < n; i++) { tick(1 / 60); if (i % 15 === 14) out.push([+player.pos.x.toFixed(2), +player.pos.z.toFixed(2), +player.yaw.toFixed(2), tobiCur]); } keys.clear(); prev.forEach((k) => keys.add(k)); paused = false; return out; },
   press(k) { interactKey(k); },
-  S, player, cam, iw, camera, tobiState: () => tobiCur, get tobi() { return tobi; }, THREE, W, setState, resetScene, go(x, z, yaw) { player.pos.set(x, heightAt(x, z), z); if (yaw !== undefined) player.yaw = yaw; cam.yaw = player.yaw; }, interact, skipIntro() { cam.intro = 99; } };
+  S, player, cam, iw, camera, splash, sound, heightAt, tobiState: () => tobiCur, get tobi() { return tobi; }, THREE, W, setState, resetScene, go(x, z, yaw) { player.pos.set(x, heightAt(x, z), z); if (yaw !== undefined) player.yaw = yaw; cam.yaw = player.yaw; }, interact, skipIntro() { cam.intro = 99; } };

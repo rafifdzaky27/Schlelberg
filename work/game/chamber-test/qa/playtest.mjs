@@ -77,13 +77,24 @@ await ev(() => { window.__ct.resetScene(); window.__ct.skipIntro(); window.__ct.
 const down = await ev(() => window.__ct.sim(60 * 9, ['w']));
 const end = down[down.length - 1];
 check('W from the stair top reaches the door area', end[1] < -3.2, `ended at z=${end[1]}`);
+// 5b. water lies on each step down into the pit, with water spilling over the edges
+const steps = await ev(() => { const c = window.__ct, T = c.THREE; const sc = c.W.waterMain.parent;
+  return [-3.28, -3.64].map((z) => new T.Raycaster(new T.Vector3(0.3, 2, z), new T.Vector3(0, -1, 0)).intersectObjects(sc.children, true).filter((h) => h.object.type !== 'Points' && (!c.tobi || !c.tobi.getObjectById(h.object.id))).slice(0, 2).map((h) => +h.point.y.toFixed(2))); });
+check('a sheet of water lies on each upper step', steps[0][0] === -0.25 && steps[0][1] === -0.3 && steps[1][0] === -0.55 && steps[1][1] === -0.6, JSON.stringify(steps));
+check('water spills over the three step edges', await ev(() => window.__ct.W.falls.length === 3), '');
+// 5c. Tobious's feet splash when they land in water, not at random
+const spl = await ev(() => { const c = window.__ct; c.go(0, 2, Math.PI); c.cam.yaw = Math.PI; c.S.splashes = 0; c.sim(120, ['w']); const walking = c.S.splashes; c.S.splashes = 0; c.sim(60, []); return { walking, standing: c.S.splashes, drops: c.splash.count() }; });
+check('footsteps splash while walking (one per footfall) and stop once he stands', spl.walking >= 3 && spl.walking <= 9 && spl.standing <= 1, JSON.stringify(spl));
+// 5d. voice clips decode under the page's security policy
+const snd = await ev(async () => { const c = window.__ct; c.sound.unlock(); for (let i = 0; i < 50 && c.sound.loaded + c.sound.failed.length < 9; i++) await new Promise((r) => setTimeout(r, 200)); return { loaded: c.sound.loaded, failed: c.sound.failed }; });
+check('all 9 voice clips load', snd.loaded === 9, JSON.stringify(snd));
 // 6. at the clamp, E starts the echo; Enter skips it; the door goes live and the Iwang arrives
 await ev(() => { window.__ct.go(0.8, -4.95, Math.PI); window.__ct.sim(5, []); window.__ct.press('e'); });
 const s1 = await ev(() => window.__ct.S.state);
 check('E at the clamp starts the echo', s1 === 'echo', s1);
 const frozen = await ev(() => { const c = window.__ct; const a = c.player.pos.clone(); c.sim(60, ['w']); return +c.player.pos.distanceTo(a).toFixed(3); });
 check('Tobious stands still during the echo', frozen === 0, `moved ${frozen} m`);
-await ev(() => { window.__ct.press('enter'); window.__ct.sim(60 * 5, []); });
+await ev(() => { window.__ct.press('enter'); window.__ct.sim(60 * 9, []); }); // the overseer's line runs, then the door goes live
 const s2 = await ev(() => ({ st: window.__ct.S.state, iw: window.__ct.iw.mode }));
 check('after the echo the door goes live', s2.st === 'live', JSON.stringify(s2));
 await ev(() => window.__ct.sim(60 * 7, []));
@@ -91,6 +102,10 @@ const iwp = await ev(() => ({ mode: window.__ct.iw.mode, z: +window.__ct.iw.pos.
 check('the Iwang steps out of the door', iwp.vis && iwp.z > -6.25 + 0.5, JSON.stringify(iwp));
 const iwFace = await ev(() => { const c = window.__ct; const to = Math.atan2(c.player.pos.x - c.iw.pos.x, c.player.pos.z - c.iw.pos.z); return Math.round(Math.atan2(Math.sin(c.iw.yaw - to), Math.cos(c.iw.yaw - to)) * 57.3); });
 check('the Iwang faces Tobious', Math.abs(iwFace) < 25, `facing error ${iwFace} deg`);
+// 7b. the Iwang keeps to the pit floor when Tobious goes up the steps, and its height never jumps
+const iwStay = await ev(() => { const c = window.__ct; c.go(0.3, -2.4, 0); let maxZ = -99, maxDy = 0, py = c.iw.pos.y; for (let i = 0; i < 360; i++) { c.sim(1, []); maxZ = Math.max(maxZ, c.iw.pos.z); maxDy = Math.max(maxDy, Math.abs(c.iw.pos.y - py)); py = c.iw.pos.y; } return { maxZ: +maxZ.toFixed(2), maxDy: +maxDy.toFixed(3), y: +c.iw.pos.y.toFixed(2), feet: c.iw.feet.bones.length }; });
+check('the Iwang stays off the steps (z <= -4.4) and its height changes smoothly', iwStay.maxZ <= -4.4 && iwStay.maxDy < 0.03 && iwStay.y === -0.9, JSON.stringify(iwStay));
+check('the Iwang rig has two feet to splash with', iwStay.feet === 2, String(iwStay.feet));
 await ev(() => { window.__ct.press(' '); window.__ct.sim(60 * 8, []); });
 const s3 = await ev(() => ({ st: window.__ct.S.state, iw: window.__ct.iw.mode }));
 check('Space closes the door and the Iwang goes back', s3.st === 'dormant' && s3.iw === 'hidden', JSON.stringify(s3));

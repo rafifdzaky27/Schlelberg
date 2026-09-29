@@ -11,6 +11,9 @@ export const R = 7.0;                                  // chamber radius
 export const SUNK = { x: 2.3, z0: -6.3, z1: -3.1, y: -0.9 };   // sunken area before the door
 export const DOOR = { z: -6.25, y0: -0.72, w: 2.0, h: 2.9 };    // the black surface, standing on its stone step
 export const STAIR = { x: 1.05, z0: 6.7, z1: 11.2, rise: 3.2 };  // stair up to daylight
+export const STEP_D = 0.36;                                     // depth of each step down into the pit
+// water surface height: ankle-deep on the hall floor, a thin sheet on each step
+export function waterY(x, z) { const g = heightAt(x, z); return g + (g <= SUNK.y + 0.01 ? 0.06 : 0.05); }
 const STONE = [0xb9ab93, 0xa89a82, 0xc4b69c, 0x9c8f79, 0xb3a58c];
 const r = rng(7);
 
@@ -137,9 +140,44 @@ export function buildWorld(scene, stones) {
   W.waterMain = new THREE.Mesh(new THREE.ShapeGeometry(floorShape(), 48).rotateX(-Math.PI / 2), water);
   W.waterMain.position.y = 0.05; scene.add(W.waterMain);
   const water2 = makeWater({ deep: 0x16211f, refl: 0x4a6060, toon: 1, opacity: 0.8, scale: 2.2 });
-  W.waterSunk = new THREE.Mesh(new THREE.PlaneGeometry(SUNK.x * 2, SUNK.z1 - 1.05 - SUNK.z0).rotateX(-Math.PI / 2), water2);
-  W.waterSunk.position.set(0, SUNK.y + 0.06, (SUNK.z0 + SUNK.z1 - 1.05) / 2); scene.add(W.waterSunk);
+  // pit water reaches the foot of the bottom step (the third step sits at pit level)
+  const pitEnd = SUNK.z1 - 2 * STEP_D;
+  W.waterSunk = new THREE.Mesh(new THREE.PlaneGeometry(SUNK.x * 2, pitEnd - SUNK.z0).rotateX(-Math.PI / 2), water2);
+  W.waterSunk.position.set(0, SUNK.y + 0.06, (SUNK.z0 + pitEnd) / 2); scene.add(W.waterSunk);
   water2.uniforms.uLineZ.value = DOOR.z + 0.03;
+  // a thin sheet on each upper step, same material, so ripples cross from step to step
+  W.stepWater = [0, 1].map((k) => {
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(SUNK.x * 2, STEP_D).rotateX(-Math.PI / 2), water2);
+    m.position.set(0, -0.3 * (k + 1) + 0.05, SUNK.z1 - STEP_D * (k + 0.5)); scene.add(m); return m;
+  });
+  // water spilling over each step edge: from the hall floor onto step 1, then 1 to 2, then 2 to the pit
+  W.falls = [];
+  const fallMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, side: THREE.DoubleSide, fog: true,
+    uniforms: THREE.UniformsUtils.merge([THREE.UniformsLib.fog, { uTime: { value: 0 }, uCalm: { value: 0 } }]),
+    vertexShader: 'varying vec2 vUv; varying vec3 vW;\n#include <fog_pars_vertex>\nvoid main(){ vUv = uv; vec4 w = modelMatrix*vec4(position,1.); vW = w.xyz; vec4 mvPosition = viewMatrix*w; gl_Position = projectionMatrix*mvPosition;\n#include <fog_vertex>\n}',
+    fragmentShader: /* glsl */`
+      uniform float uTime, uCalm; varying vec2 vUv; varying vec3 vW;
+      #include <fog_pars_fragment>
+      float h(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+      float n(vec2 p){ vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f); return mix(mix(h(i), h(i+vec2(1,0)), f.x), mix(h(i+vec2(0,1)), h(i+vec2(1,1)), f.x), f.y); }
+      void main() {
+        float speed = mix(1.6, 0.05, uCalm);
+        float streak = n(vec2(vW.x * 26.0, vUv.y * 3.0 + uTime * speed * 4.0));
+        float foam = smoothstep(0.35, 0.0, vUv.y) + smoothstep(0.8, 1.0, vUv.y) * 0.5;
+        vec3 col = mix(vec3(0.2, 0.28, 0.28), vec3(0.75, 0.82, 0.8), smoothstep(0.55, 0.9, streak) * 0.8 + foam * 0.6);
+        float a = (0.45 + 0.35 * streak) * smoothstep(0.0, 0.08, vUv.y);
+        gl_FragColor = vec4(col, a);
+        #include <fog_fragment>
+      }`,
+  });
+  for (let k = 0; k < 3; k++) {
+    const top = k === 0 ? 0.05 : -0.3 * k + 0.05, bottom = -0.3 * (k + 1) + 0.05;
+    const f = new THREE.Mesh(new THREE.PlaneGeometry(SUNK.x * 2 - 0.1, top - bottom), fallMat);
+    f.position.set(0, (top + bottom) / 2, SUNK.z1 - STEP_D * k - 0.015); scene.add(f);
+    W.falls.push({ mesh: f, z: SUNK.z1 - STEP_D * k - 0.04, top, bottom });
+  }
+  W.fallMat = fallMat;
   W.waters = [W.waterMain, W.waterSunk];
 
   // ---------- light ----------
