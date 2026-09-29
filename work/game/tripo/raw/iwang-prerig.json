@@ -1,0 +1,19 @@
+{
+  "task_id": "2a52c970-929d-45ca-a78a-cc655b9ecc78",
+  "type": "animate_prerigcheck",
+  "status": "success",
+  "input": {
+    "original_model_id": "98bd8c70-ae7d-4e7c-92c9-8ad7d26693dc"
+  },
+  "output": {
+    "riggable": true,
+    "rig_type": "biped",
+    "topology": "biped"
+  },
+  "progress": 100,
+  "create_time": 1790662593,
+  "consumed_credit": 0,
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {}
+}
