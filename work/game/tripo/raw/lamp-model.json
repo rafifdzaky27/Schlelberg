@@ -1,0 +1,37 @@
+{
+  "task_id": "7e73ec77-e26f-444d-bd9e-5a51641c50f7",
+  "type": "text_to_model",
+  "status": "success",
+  "input": {
+    "prompt": "small clay oil lamp, a shallow round dish with three pinched spouts for three wicks, terracotta, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+    "model_version": "v2.5-20250123",
+    "texture": true,
+    "pbr": true,
+    "texture_alignment": "geometry",
+    "export_uv": true,
+    "face_limit": 6000,
+    "geometry_quality": "standard"
+  },
+  "output": {
+    "pbr_model": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/7e73ec77-e26f-444d-bd9e-5a51641c50f7/tripo_pbr_model_7e73ec77-e26f-444d-bd9e-5a51641c50f7.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvN2U3M2VjNzctZTI2Zi00NDRkLWJkOWUtNWE1MTY0MWM1MGY3L3RyaXBvX3Bicl9tb2RlbF83ZTczZWM3Ny1lMjZmLTQ0NGQtYmQ5ZS01YTUxNjQxYzUwZjcuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=BHFXgfB0ZwsghGkkg1xxvFJQA-0fNWB3UsSt--2VVZZmmcUVwl8UsSRPSIqINbv3losSFJzSmCJWpbn8LAZuVO57qh2eRGXvTPKYNIjPIh7KViQ1fDl0ngA3h8p0winiU8c3Vyo-bYRxvuueK425I-9UvnPZkmOE6tX-apo9PE7O8Y4pRwscMnV~EpIaTrWPLSvm~6sZFY6bpdmtmEysx-HTsVcUClfdOSNE9q4W5bvr-VXTyOqIMh~H2GxUNSSAKnZmkpgvuLNDwngrdZ1aMdXYd1irvDwQA6o-u-F5~kgWLbhWD-l1zOKu9mU0l5~tfRfhyj8kcNWYsihLZHa4EA__",
+    "generated_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/7e73ec77-e26f-444d-bd9e-5a51641c50f7/text2image_7e73ec77-e26f-444d-bd9e-5a51641c50f7.jpeg?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvN2U3M2VjNzctZTI2Zi00NDRkLWJkOWUtNWE1MTY0MWM1MGY3L3RleHQyaW1hZ2VfN2U3M2VjNzctZTI2Zi00NDRkLWJkOWUtNWE1MTY0MWM1MGY3LmpwZWciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=JW-u8RdNH~5J27qnLkLj9Q7~494EyRYUqNObhZ4snqf7D0YMYSaa44e-wcOzlvlkXf8I8gThPSCZjKTXLOJatBHNI2qEYd0A3~FfbCrnWkGE8YFLxeOdsEPPW6xnsXxc0WCLKds-P3YsY0wfXD6SoNzOAlQMUUNlTwS~QJcOGWJNG7AQQ~1IZp1ND4L8B49m-Rze1n4Fc51gpSeFlLwzfSd~eyA5G7fj2QfePDpMAv7NdkFMfUpKRin1eB2kII586s4dknHILcpe3NnvWsS5-Ov-NATv4HebTt~tJd74msMcWyuo~MozXTVf3gLf1gblFeljJC2vx7GMyHjXzj1a9A__",
+    "rendered_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/7e73ec77-e26f-444d-bd9e-5a51641c50f7/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvN2U3M2VjNzctZTI2Zi00NDRkLWJkOWUtNWE1MTY0MWM1MGY3L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=xcuP5NJRljJwfMVnBHB76jlcPS0Dr3xv16ZNQUUUIdtNrEo9fR7FlwsoD1ksyPLcrz3gTooyn~6CSFJwEgU6OBGw-rnbfwFY5dv3j4glCjFY-O1NduqzhMb2tZMz1sw1XdRKaGFrycpTz7K0-xHEgPDmkLXvgYSZ3gqdg5RZB26Lc7y6U7pIZDoFBcRZ-g53pcQRO-TFByz1sPxVkqwTpEyU5FasximvVO6XXhAalWWF1R2PhswuE~YlGX0EnN5Xz5meolSV2akNPuuu9Efgyd1NvKvZ4Kd0H1WdItVGeiVpOJar7j0LV2etR4FKYC01kLPw6BBeRgKVpst7DrJ-5Q__"
+  },
+  "progress": 100,
+  "create_time": 1790664571,
+  "consumed_credit": 20,
+  "prompt": "small clay oil lamp, a shallow round dish with three pinched spouts for three wicks, terracotta, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+  "thumbnail": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/7e73ec77-e26f-444d-bd9e-5a51641c50f7/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvN2U3M2VjNzctZTI2Zi00NDRkLWJkOWUtNWE1MTY0MWM1MGY3L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=xcuP5NJRljJwfMVnBHB76jlcPS0Dr3xv16ZNQUUUIdtNrEo9fR7FlwsoD1ksyPLcrz3gTooyn~6CSFJwEgU6OBGw-rnbfwFY5dv3j4glCjFY-O1NduqzhMb2tZMz1sw1XdRKaGFrycpTz7K0-xHEgPDmkLXvgYSZ3gqdg5RZB26Lc7y6U7pIZDoFBcRZ-g53pcQRO-TFByz1sPxVkqwTpEyU5FasximvVO6XXhAalWWF1R2PhswuE~YlGX0EnN5Xz5meolSV2akNPuuu9Efgyd1NvKvZ4Kd0H1WdItVGeiVpOJar7j0LV2etR4FKYC01kLPw6BBeRgKVpst7DrJ-5Q__",
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {
+    "pbr_model": {
+      "type": "glb",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/7e73ec77-e26f-444d-bd9e-5a51641c50f7/tripo_pbr_model_7e73ec77-e26f-444d-bd9e-5a51641c50f7.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvN2U3M2VjNzctZTI2Zi00NDRkLWJkOWUtNWE1MTY0MWM1MGY3L3RyaXBvX3Bicl9tb2RlbF83ZTczZWM3Ny1lMjZmLTQ0NGQtYmQ5ZS01YTUxNjQxYzUwZjcuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=BHFXgfB0ZwsghGkkg1xxvFJQA-0fNWB3UsSt--2VVZZmmcUVwl8UsSRPSIqINbv3losSFJzSmCJWpbn8LAZuVO57qh2eRGXvTPKYNIjPIh7KViQ1fDl0ngA3h8p0winiU8c3Vyo-bYRxvuueK425I-9UvnPZkmOE6tX-apo9PE7O8Y4pRwscMnV~EpIaTrWPLSvm~6sZFY6bpdmtmEysx-HTsVcUClfdOSNE9q4W5bvr-VXTyOqIMh~H2GxUNSSAKnZmkpgvuLNDwngrdZ1aMdXYd1irvDwQA6o-u-F5~kgWLbhWD-l1zOKu9mU0l5~tfRfhyj8kcNWYsihLZHa4EA__"
+    },
+    "rendered_image": {
+      "type": "webp",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/7e73ec77-e26f-444d-bd9e-5a51641c50f7/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvN2U3M2VjNzctZTI2Zi00NDRkLWJkOWUtNWE1MTY0MWM1MGY3L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=xcuP5NJRljJwfMVnBHB76jlcPS0Dr3xv16ZNQUUUIdtNrEo9fR7FlwsoD1ksyPLcrz3gTooyn~6CSFJwEgU6OBGw-rnbfwFY5dv3j4glCjFY-O1NduqzhMb2tZMz1sw1XdRKaGFrycpTz7K0-xHEgPDmkLXvgYSZ3gqdg5RZB26Lc7y6U7pIZDoFBcRZ-g53pcQRO-TFByz1sPxVkqwTpEyU5FasximvVO6XXhAalWWF1R2PhswuE~YlGX0EnN5Xz5meolSV2akNPuuu9Efgyd1NvKvZ4Kd0H1WdItVGeiVpOJar7j0LV2etR4FKYC01kLPw6BBeRgKVpst7DrJ-5Q__"
+    }
+  }
+}

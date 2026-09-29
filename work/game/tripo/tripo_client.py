@@ -82,7 +82,8 @@ def wait(tid, name, label=""):
                 cells = [c.strip() for c in l.strip("|").split("|")]
                 before = int(cells[4])
                 cells[5] = str(after)
-                cells[6] = str(before - after)
+                # the task's own figure is exact even when several tasks overlap
+                cells[6] = str(d.get("consumed_credit", before - after))
                 lines[i] = "| " + " | ".join(cells) + " |"
         open(LOG, "w").write("\n".join(lines) + "\n")
     json.dump(d, open(os.path.join(HERE, "raw", f"{name}-{label or 'task'}.json"), "w"), indent=2)

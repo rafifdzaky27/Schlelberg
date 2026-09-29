@@ -1,0 +1,37 @@
+{
+  "task_id": "117ca2fa-2bf3-4cc9-a69a-13c711f2afec",
+  "type": "text_to_model",
+  "status": "success",
+  "input": {
+    "prompt": "ancient monumental stone doorway frame, tall rectangular portal of weathered pale limestone blocks, thick jambs and a heavy lintel carved with worn spiral reliefs, a small square recess with a green bronze clamp on the right jamb, the middle of the doorway is an empty opening, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+    "model_version": "v2.5-20250123",
+    "texture": true,
+    "pbr": true,
+    "texture_alignment": "geometry",
+    "export_uv": true,
+    "face_limit": 6000,
+    "geometry_quality": "standard"
+  },
+  "output": {
+    "pbr_model": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/117ca2fa-2bf3-4cc9-a69a-13c711f2afec/tripo_pbr_model_117ca2fa-2bf3-4cc9-a69a-13c711f2afec.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvMTE3Y2EyZmEtMmJmMy00Y2M5LWE2OWEtMTNjNzExZjJhZmVjL3RyaXBvX3Bicl9tb2RlbF8xMTdjYTJmYS0yYmYzLTRjYzktYTY5YS0xM2M3MTFmMmFmZWMuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=Z5kXbotqg3-txIWkRNDngTzhrIA1OShvwR65SONu14dyHRWtNduGCX3v86qrVFDWgY3oobmCbKaX9s86gcU2Qn~aMLXfBCei5huziz9m~xBjDuoo9fkAXCBua1Y5WuCzice~1swu6qfE1KUX7COpFY8~JjlDGeGTPGffq2oP3TWsYjzDK4ifBy-XvShktFuk4C21qm9EyeoLcrl91ZTa5pYwMHvDYE5z9cZ2euJFsTFrMSrtwvXlcqbviH8w0MGr24OOrKAoddNZxWBRkjurEMEH2t6cK9CWezn3V1WkO~tyDPn-X80CMnHxC-4Aw0HUq6dG1iTwcRrjM0owlMB8~A__",
+    "generated_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/117ca2fa-2bf3-4cc9-a69a-13c711f2afec/text2image_117ca2fa-2bf3-4cc9-a69a-13c711f2afec.jpeg?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvMTE3Y2EyZmEtMmJmMy00Y2M5LWE2OWEtMTNjNzExZjJhZmVjL3RleHQyaW1hZ2VfMTE3Y2EyZmEtMmJmMy00Y2M5LWE2OWEtMTNjNzExZjJhZmVjLmpwZWciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=T2F48hgzbiTZzWypSveohIhDUxsy4EtR8ZdVaXfjWvDR~oIdXXJTlY64BrbMtGfz1yMos6vFKQnA3-nZFQzay5hlLzwWk0jrPXTjZki2gw-EBG8FciZKEJHfSQhRXH9aGEj3LG5JgTQ3pJsUcWLGtrNJoWCXI~VQfiMEhQZRN~7i4W2CknNp43fnJ3kThG6-93zAKQ0d9Ve1-P8IIrDpgt~VUDy6RqB5HGggi0vrHxnmNPD3D33SaORJwkFie7sL8EnaQKu2lXf0iermpgqTOEsQPa8Z1sO7~LRIwP71AWlfz3mmuLt6cuf93s1BNZHYL21QIlnrXoIPgWUf5VAvuA__",
+    "rendered_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/117ca2fa-2bf3-4cc9-a69a-13c711f2afec/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvMTE3Y2EyZmEtMmJmMy00Y2M5LWE2OWEtMTNjNzExZjJhZmVjL2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ixGQkQ7ozsSC3wPpRUklDCMfThpoNRLdQwdvA55fY6yB9mHWtio8Y4yN590C1xLejPqAaCKSdCNgB-A34M0WnAl233fc7biv5SF6LMIkFyYtOt9UzNKu4GhNMtfsWjfpzu1FEiO6VzUhR5v7-bHyAI83BgWPZwy6pN7~uYMCE1WXlYgFerDuf7fStxbwrAwPY1BuxTmElj-BEA3bHcz35CQUnS4lRbYLQE4F1LAhMQgBTsTweeeTlKnKXMhA1o3QGcavoWf3ejwh67azseHfTg1dW~mqon4JYvcXuAqPHhAjunQvdzWoHYkurrLbgPGrobjv6psDlp3el-kH80jEQg__"
+  },
+  "progress": 100,
+  "create_time": 1790664567,
+  "consumed_credit": 20,
+  "prompt": "ancient monumental stone doorway frame, tall rectangular portal of weathered pale limestone blocks, thick jambs and a heavy lintel carved with worn spiral reliefs, a small square recess with a green bronze clamp on the right jamb, the middle of the doorway is an empty opening, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+  "thumbnail": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/117ca2fa-2bf3-4cc9-a69a-13c711f2afec/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvMTE3Y2EyZmEtMmJmMy00Y2M5LWE2OWEtMTNjNzExZjJhZmVjL2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ixGQkQ7ozsSC3wPpRUklDCMfThpoNRLdQwdvA55fY6yB9mHWtio8Y4yN590C1xLejPqAaCKSdCNgB-A34M0WnAl233fc7biv5SF6LMIkFyYtOt9UzNKu4GhNMtfsWjfpzu1FEiO6VzUhR5v7-bHyAI83BgWPZwy6pN7~uYMCE1WXlYgFerDuf7fStxbwrAwPY1BuxTmElj-BEA3bHcz35CQUnS4lRbYLQE4F1LAhMQgBTsTweeeTlKnKXMhA1o3QGcavoWf3ejwh67azseHfTg1dW~mqon4JYvcXuAqPHhAjunQvdzWoHYkurrLbgPGrobjv6psDlp3el-kH80jEQg__",
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {
+    "pbr_model": {
+      "type": "glb",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/117ca2fa-2bf3-4cc9-a69a-13c711f2afec/tripo_pbr_model_117ca2fa-2bf3-4cc9-a69a-13c711f2afec.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvMTE3Y2EyZmEtMmJmMy00Y2M5LWE2OWEtMTNjNzExZjJhZmVjL3RyaXBvX3Bicl9tb2RlbF8xMTdjYTJmYS0yYmYzLTRjYzktYTY5YS0xM2M3MTFmMmFmZWMuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=Z5kXbotqg3-txIWkRNDngTzhrIA1OShvwR65SONu14dyHRWtNduGCX3v86qrVFDWgY3oobmCbKaX9s86gcU2Qn~aMLXfBCei5huziz9m~xBjDuoo9fkAXCBua1Y5WuCzice~1swu6qfE1KUX7COpFY8~JjlDGeGTPGffq2oP3TWsYjzDK4ifBy-XvShktFuk4C21qm9EyeoLcrl91ZTa5pYwMHvDYE5z9cZ2euJFsTFrMSrtwvXlcqbviH8w0MGr24OOrKAoddNZxWBRkjurEMEH2t6cK9CWezn3V1WkO~tyDPn-X80CMnHxC-4Aw0HUq6dG1iTwcRrjM0owlMB8~A__"
+    },
+    "rendered_image": {
+      "type": "webp",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/117ca2fa-2bf3-4cc9-a69a-13c711f2afec/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvMTE3Y2EyZmEtMmJmMy00Y2M5LWE2OWEtMTNjNzExZjJhZmVjL2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ixGQkQ7ozsSC3wPpRUklDCMfThpoNRLdQwdvA55fY6yB9mHWtio8Y4yN590C1xLejPqAaCKSdCNgB-A34M0WnAl233fc7biv5SF6LMIkFyYtOt9UzNKu4GhNMtfsWjfpzu1FEiO6VzUhR5v7-bHyAI83BgWPZwy6pN7~uYMCE1WXlYgFerDuf7fStxbwrAwPY1BuxTmElj-BEA3bHcz35CQUnS4lRbYLQE4F1LAhMQgBTsTweeeTlKnKXMhA1o3QGcavoWf3ejwh67azseHfTg1dW~mqon4JYvcXuAqPHhAjunQvdzWoHYkurrLbgPGrobjv6psDlp3el-kH80jEQg__"
+    }
+  }
+}

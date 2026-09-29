@@ -1,0 +1,37 @@
+{
+  "task_id": "b3cae165-170c-4d79-b3d2-581284969198",
+  "type": "text_to_model",
+  "status": "success",
+  "input": {
+    "prompt": "large clay storage jar pithos with two small handles and raised rope-pattern bands, terracotta with a scratched leaf mark, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+    "model_version": "v2.5-20250123",
+    "texture": true,
+    "pbr": true,
+    "texture_alignment": "geometry",
+    "export_uv": true,
+    "face_limit": 6000,
+    "geometry_quality": "standard"
+  },
+  "output": {
+    "pbr_model": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b3cae165-170c-4d79-b3d2-581284969198/tripo_pbr_model_b3cae165-170c-4d79-b3d2-581284969198.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjNjYWUxNjUtMTcwYy00ZDc5LWIzZDItNTgxMjg0OTY5MTk4L3RyaXBvX3Bicl9tb2RlbF9iM2NhZTE2NS0xNzBjLTRkNzktYjNkMi01ODEyODQ5NjkxOTguZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=FPXHgmGeFUY37X24ZCmUBMDGg00hbOML141o9ZLfl0xG5rpFdlZb3XuvMjJ3r9j88Awf9UohPBw6wE2gqwuYye40wxjLyDT-zx-7qoANv-bHq6e2UtU2QsdoSJ~7SoVRxc2kGp3h9kKN2v8xCtdCzVAbhpaUoydvpJUM4mSjcw971n8dssyD2tERWj2JZeXRTIaEAxOlkEoY3ZHgFGrZYpSMfPZiyOmAjEtYBtHszjd2ZD07DEPerqW6Pps3fFeRnRNJCQRKmvuYBYkuntG0sSKHPoiHP8Ec4JB-rovq-ICp9F9wmPbO3LarZ4HrsEsf7krIBWD2~rS3siMGjvsbAw__",
+    "generated_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b3cae165-170c-4d79-b3d2-581284969198/text2image_b3cae165-170c-4d79-b3d2-581284969198.jpeg?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjNjYWUxNjUtMTcwYy00ZDc5LWIzZDItNTgxMjg0OTY5MTk4L3RleHQyaW1hZ2VfYjNjYWUxNjUtMTcwYy00ZDc5LWIzZDItNTgxMjg0OTY5MTk4LmpwZWciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=mTF6KHg-QP-oRa9WQ9KBSZa-x7OF6uGPmI5G8efU2AYLq~fKe8RE7AslZ3OZOdDkVxna2by6Dqm-aridlQ1i2a7hhI6~RWcU7I-Nc-20hJfUmfAohs1QzaCcvYagpU46d-AtzZdxIeHgjEmtSrDGyGxdd67QcIYWNYm8R2~ZPwmlDPK1ftb9dyqPAORKhi6Om8tbukJRBEp7TvKoiOY5e7TvTkGmhylOjN1uo8ytG04lohXblGoM4dIh4PqUySLB2F3xpNXPK~OE30GS3pd6szyrRrh9Z89cBB7hjkGhUH1XjA0o~xelo8kZQj195Y5D880nCr5KZM0q6VHE5HX~BA__",
+    "rendered_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b3cae165-170c-4d79-b3d2-581284969198/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjNjYWUxNjUtMTcwYy00ZDc5LWIzZDItNTgxMjg0OTY5MTk4L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=jaHqIfieDpaAgj6JsoatNNsanhk17yARreepsU5KmYM2cj2g8hRqmrRRLsZaG~yRadsK~wnKcdJYp2tzm9CyYDv2vkXX4tWZjLZfPMzKaOm5aGgl7iHVjGtnAtWZCOLFXZNZfuoIl429WQfgdITlKukG6s8-5GppnxqBZz3NOlo6ReAw5HHJ6XueFSgqmgGi6imCbWNhp4yggbuE2K2uBn79cUhOnkoEbmZZZ9O2~57zol64GxGoEeTBL~FR9QuMJgwg-jLyS2qgwdc7mZ8r48wHe~~7OJuqZ80urQH3mX4-EOIWUgwg3ZBHs1X8S4l47~2jylEqmGXGJx4ztDGbIw__"
+  },
+  "progress": 100,
+  "create_time": 1790664569,
+  "consumed_credit": 20,
+  "prompt": "large clay storage jar pithos with two small handles and raised rope-pattern bands, terracotta with a scratched leaf mark, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+  "thumbnail": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b3cae165-170c-4d79-b3d2-581284969198/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjNjYWUxNjUtMTcwYy00ZDc5LWIzZDItNTgxMjg0OTY5MTk4L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=jaHqIfieDpaAgj6JsoatNNsanhk17yARreepsU5KmYM2cj2g8hRqmrRRLsZaG~yRadsK~wnKcdJYp2tzm9CyYDv2vkXX4tWZjLZfPMzKaOm5aGgl7iHVjGtnAtWZCOLFXZNZfuoIl429WQfgdITlKukG6s8-5GppnxqBZz3NOlo6ReAw5HHJ6XueFSgqmgGi6imCbWNhp4yggbuE2K2uBn79cUhOnkoEbmZZZ9O2~57zol64GxGoEeTBL~FR9QuMJgwg-jLyS2qgwdc7mZ8r48wHe~~7OJuqZ80urQH3mX4-EOIWUgwg3ZBHs1X8S4l47~2jylEqmGXGJx4ztDGbIw__",
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {
+    "pbr_model": {
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b3cae165-170c-4d79-b3d2-581284969198/tripo_pbr_model_b3cae165-170c-4d79-b3d2-581284969198.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjNjYWUxNjUtMTcwYy00ZDc5LWIzZDItNTgxMjg0OTY5MTk4L3RyaXBvX3Bicl9tb2RlbF9iM2NhZTE2NS0xNzBjLTRkNzktYjNkMi01ODEyODQ5NjkxOTguZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=FPXHgmGeFUY37X24ZCmUBMDGg00hbOML141o9ZLfl0xG5rpFdlZb3XuvMjJ3r9j88Awf9UohPBw6wE2gqwuYye40wxjLyDT-zx-7qoANv-bHq6e2UtU2QsdoSJ~7SoVRxc2kGp3h9kKN2v8xCtdCzVAbhpaUoydvpJUM4mSjcw971n8dssyD2tERWj2JZeXRTIaEAxOlkEoY3ZHgFGrZYpSMfPZiyOmAjEtYBtHszjd2ZD07DEPerqW6Pps3fFeRnRNJCQRKmvuYBYkuntG0sSKHPoiHP8Ec4JB-rovq-ICp9F9wmPbO3LarZ4HrsEsf7krIBWD2~rS3siMGjvsbAw__",
+      "type": "glb"
+    },
+    "rendered_image": {
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b3cae165-170c-4d79-b3d2-581284969198/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjNjYWUxNjUtMTcwYy00ZDc5LWIzZDItNTgxMjg0OTY5MTk4L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=jaHqIfieDpaAgj6JsoatNNsanhk17yARreepsU5KmYM2cj2g8hRqmrRRLsZaG~yRadsK~wnKcdJYp2tzm9CyYDv2vkXX4tWZjLZfPMzKaOm5aGgl7iHVjGtnAtWZCOLFXZNZfuoIl429WQfgdITlKukG6s8-5GppnxqBZz3NOlo6ReAw5HHJ6XueFSgqmgGi6imCbWNhp4yggbuE2K2uBn79cUhOnkoEbmZZZ9O2~57zol64GxGoEeTBL~FR9QuMJgwg-jLyS2qgwdc7mZ8r48wHe~~7OJuqZ80urQH3mX4-EOIWUgwg3ZBHs1X8S4l47~2jylEqmGXGJx4ztDGbIw__",
+      "type": "webp"
+    }
+  }
+}

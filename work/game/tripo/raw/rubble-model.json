@@ -1,0 +1,37 @@
+{
+  "task_id": "51c7d581-6c2c-4c17-8ca6-1c07985ede45",
+  "type": "text_to_model",
+  "status": "success",
+  "input": {
+    "prompt": "low pile of broken limestone blocks and rubble with dust, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+    "model_version": "v2.5-20250123",
+    "texture": true,
+    "pbr": true,
+    "texture_alignment": "geometry",
+    "export_uv": true,
+    "face_limit": 6000,
+    "geometry_quality": "standard"
+  },
+  "output": {
+    "pbr_model": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/51c7d581-6c2c-4c17-8ca6-1c07985ede45/tripo_pbr_model_51c7d581-6c2c-4c17-8ca6-1c07985ede45.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNTFjN2Q1ODEtNmMyYy00YzE3LThjYTYtMWMwNzk4NWVkZTQ1L3RyaXBvX3Bicl9tb2RlbF81MWM3ZDU4MS02YzJjLTRjMTctOGNhNi0xYzA3OTg1ZWRlNDUuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=YdxRxXTrLlq~vsda-LQtkac1GlC4iDPUSnFEyO9wPPEDaTuHo9mmYS8LWiVFDWfG-ZHFW0DJgo~5oY9rw7CCLzqpl7s6kkn59XLKEgcR3IOEhqAy3lQC0R2cSzi9o5GbUFZrB1j3FAOqCtnTenv9eaghp8oFC3gQnY3oB8t6uP8F8rlnV6~-fgikHFS47Jb7RZSaHl3vZMEosjDaoqkTpjGdXKlWle-6YQSQn5DTzHcyUL39gxZVEUQsPWD8YXWlmO1QPHBooRFslftN90tYBsl~oB0-rejjDA9-b6KOwK69ABJFBDnG57qKPtnJXHgOvAJQTpoDa45lyPQGrLSZfQ__",
+    "generated_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/51c7d581-6c2c-4c17-8ca6-1c07985ede45/text2image_51c7d581-6c2c-4c17-8ca6-1c07985ede45.jpeg?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNTFjN2Q1ODEtNmMyYy00YzE3LThjYTYtMWMwNzk4NWVkZTQ1L3RleHQyaW1hZ2VfNTFjN2Q1ODEtNmMyYy00YzE3LThjYTYtMWMwNzk4NWVkZTQ1LmpwZWciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ubvv-LqrXBZjo1GDJuCDg7SgwnrguG7UlaWzfcX9zLvsw6MzcH2z5057QGZkoxb0IyM1g2frVmpNUE-zZXS3RA8Xden9kuHtuESEDutEiifH1lgPTO-9UkEw3D3pCRzUYUykmGRjHuIEeJ~r0KfjdYHUR~pYGVn46oUsg1S1fR7jjpPpdU2~BcO0jqlP0-ta7MTAI0L-6ojC2gKNQZ~X1gx~dFB1ksAr3ZoC140GZApQSc418CI5aYQnhndD5GXmBan6Q~4tAJG6mpFolzmm8HSUwQzY0O6pi9js0P80F5wRtYLAv3uYJsQ9W1hxZE-toM~5urfgemXUfLpaj8Zi4g__",
+    "rendered_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/51c7d581-6c2c-4c17-8ca6-1c07985ede45/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNTFjN2Q1ODEtNmMyYy00YzE3LThjYTYtMWMwNzk4NWVkZTQ1L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=vrwaxHpqn~D6pahOo14O2SU~Nz-1jJ3v5RPY6LJ1qMj53cR4J3XRzYOIw47ma-BZtjStyr3yu9XPyHFjNbgowccESe55Fm1FBh4Tz69LYjj5bZSTMYV7D36~vMXCQDQP6OvXDMDrFxnnGic~ZlZhrsc7kbCN85wJxWluSRgmsKJytGBfumxPaT1Dh9bmGrDVWnzcanW2lqBZUlBoTe82fCbtYDB8QZSohUlwATzF2qYffabAiRUnvX901nOiKGK6OljRIMWDJwT9GIRtLXyNB-ORlMPeUNisQN8kUbQn9lCDoAwBZZ0xzx2C6jVt-xxg4El7soxKkwptJqkliJwALg__"
+  },
+  "progress": 100,
+  "create_time": 1790664577,
+  "consumed_credit": 20,
+  "prompt": "low pile of broken limestone blocks and rubble with dust, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+  "thumbnail": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/51c7d581-6c2c-4c17-8ca6-1c07985ede45/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNTFjN2Q1ODEtNmMyYy00YzE3LThjYTYtMWMwNzk4NWVkZTQ1L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=vrwaxHpqn~D6pahOo14O2SU~Nz-1jJ3v5RPY6LJ1qMj53cR4J3XRzYOIw47ma-BZtjStyr3yu9XPyHFjNbgowccESe55Fm1FBh4Tz69LYjj5bZSTMYV7D36~vMXCQDQP6OvXDMDrFxnnGic~ZlZhrsc7kbCN85wJxWluSRgmsKJytGBfumxPaT1Dh9bmGrDVWnzcanW2lqBZUlBoTe82fCbtYDB8QZSohUlwATzF2qYffabAiRUnvX901nOiKGK6OljRIMWDJwT9GIRtLXyNB-ORlMPeUNisQN8kUbQn9lCDoAwBZZ0xzx2C6jVt-xxg4El7soxKkwptJqkliJwALg__",
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {
+    "pbr_model": {
+      "type": "glb",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/51c7d581-6c2c-4c17-8ca6-1c07985ede45/tripo_pbr_model_51c7d581-6c2c-4c17-8ca6-1c07985ede45.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNTFjN2Q1ODEtNmMyYy00YzE3LThjYTYtMWMwNzk4NWVkZTQ1L3RyaXBvX3Bicl9tb2RlbF81MWM3ZDU4MS02YzJjLTRjMTctOGNhNi0xYzA3OTg1ZWRlNDUuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=YdxRxXTrLlq~vsda-LQtkac1GlC4iDPUSnFEyO9wPPEDaTuHo9mmYS8LWiVFDWfG-ZHFW0DJgo~5oY9rw7CCLzqpl7s6kkn59XLKEgcR3IOEhqAy3lQC0R2cSzi9o5GbUFZrB1j3FAOqCtnTenv9eaghp8oFC3gQnY3oB8t6uP8F8rlnV6~-fgikHFS47Jb7RZSaHl3vZMEosjDaoqkTpjGdXKlWle-6YQSQn5DTzHcyUL39gxZVEUQsPWD8YXWlmO1QPHBooRFslftN90tYBsl~oB0-rejjDA9-b6KOwK69ABJFBDnG57qKPtnJXHgOvAJQTpoDa45lyPQGrLSZfQ__"
+    },
+    "rendered_image": {
+      "type": "webp",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/51c7d581-6c2c-4c17-8ca6-1c07985ede45/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNTFjN2Q1ODEtNmMyYy00YzE3LThjYTYtMWMwNzk4NWVkZTQ1L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=vrwaxHpqn~D6pahOo14O2SU~Nz-1jJ3v5RPY6LJ1qMj53cR4J3XRzYOIw47ma-BZtjStyr3yu9XPyHFjNbgowccESe55Fm1FBh4Tz69LYjj5bZSTMYV7D36~vMXCQDQP6OvXDMDrFxnnGic~ZlZhrsc7kbCN85wJxWluSRgmsKJytGBfumxPaT1Dh9bmGrDVWnzcanW2lqBZUlBoTe82fCbtYDB8QZSohUlwATzF2qYffabAiRUnvX901nOiKGK6OljRIMWDJwT9GIRtLXyNB-ORlMPeUNisQN8kUbQn9lCDoAwBZZ0xzx2C6jVt-xxg4El7soxKkwptJqkliJwALg__"
+    }
+  }
+}

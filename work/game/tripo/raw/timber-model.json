@@ -1,0 +1,37 @@
+{
+  "task_id": "b29f7e69-c4a9-4780-ba48-0bbca34a8c32",
+  "type": "text_to_model",
+  "status": "success",
+  "input": {
+    "prompt": "rough wooden support frame, two thick vertical timber posts and a crossbeam lashed with rope, like a mine prop, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+    "model_version": "v2.5-20250123",
+    "texture": true,
+    "pbr": true,
+    "texture_alignment": "geometry",
+    "export_uv": true,
+    "face_limit": 6000,
+    "geometry_quality": "standard"
+  },
+  "output": {
+    "pbr_model": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b29f7e69-c4a9-4780-ba48-0bbca34a8c32/tripo_pbr_model_b29f7e69-c4a9-4780-ba48-0bbca34a8c32.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjI5ZjdlNjktYzRhOS00NzgwLWJhNDgtMGJiY2EzNGE4YzMyL3RyaXBvX3Bicl9tb2RlbF9iMjlmN2U2OS1jNGE5LTQ3ODAtYmE0OC0wYmJjYTM0YThjMzIuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=BHcvyXh6~OlV42Ru1Q8VRFm-jzcKYaR~ECeQKDVJp3ehTmSNRbSgrPHqU4KKxJWfvo~WCIV27U2oti~U3Rh248zs7RUd54BOTTXAOyMbeN7e~o6Knw2gSzJgiTFOZVrPosnI6IDVeT8j-mlJ601MusUJtT9xtLSncjK~AvFrzbeSTrWlRDvDIQwpSEEgetnL505BAEZZSvT4-V-K~GnCPXpm3~AtKJcwZCtmUs0aNwG~IYgJcSU9GqCm8B8S0Q8Z0b6N78F12vI82kJYitgJg9LcfLxicVhkgvb274-LQZeVeJaXABXnq8qypcIyvoS34f2vsWVtZdhKBeXVLKCOsw__",
+    "generated_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b29f7e69-c4a9-4780-ba48-0bbca34a8c32/text2image_b29f7e69-c4a9-4780-ba48-0bbca34a8c32.jpeg?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjI5ZjdlNjktYzRhOS00NzgwLWJhNDgtMGJiY2EzNGE4YzMyL3RleHQyaW1hZ2VfYjI5ZjdlNjktYzRhOS00NzgwLWJhNDgtMGJiY2EzNGE4YzMyLmpwZWciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=AGr1JfctJ4OXIt-FBAWfB8~~TpvUNENY-hsEXe8Dn14lLMpx98~biV28T2GHQb6tvwiOVBOhfCHnSlPl9TDtajZe4ThYpptnFJT8y~WfOJsuYq8QnlPdm5iGaWgIck10NgnUgNKjgBFovrANW6~hk4bDqEtaZTI4NtsJbZTELI6dQznE3diSmkZ4yAcfI-unza4P~YCF8vM-gQ2Mx5D94qYTGOSLp5tZ73B-sKwg17P3EejKjPpgMNyL40TxYUgq8eclEC9AcVIfmvAzO-7mIQQByZKrLkdA8b2xR7rT2VrBNEVDhF-CTZnDWFZk7nIEMzqTdYoAAtnE928Kory0aA__",
+    "rendered_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b29f7e69-c4a9-4780-ba48-0bbca34a8c32/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjI5ZjdlNjktYzRhOS00NzgwLWJhNDgtMGJiY2EzNGE4YzMyL2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ZPLKUly4xz51RdYj6J-AY8eH5qDgsG0jbhWVNQl5bJuKL4P0GCWCiILdj7caXS7hMa11jxV2lJCJdhb3jE-YgZBESHDgKKwd6sG~BQazeMixHT1DfbEKUpwtBBC9zPGn4lLLbankUegm2Wq9fot3RIdhDyrTqzayEiMD7EerT-w3eGxxy9V2O3a7lDJ2VSCCYEnlCBUXGdx0-ghidV1NKeJHGqoFJfe73pjgKhKsdpqfaWhaUtdQ8xPd2~WbWUEIZri5~jDildUd5JU4lL5Zrd-v53sQ2l1Vjt574YpWr5VPIi0~crYnKm8inO5XZ0j-JFQpDYEWVC5DWwyBIICzkQ__"
+  },
+  "progress": 100,
+  "create_time": 1790664575,
+  "consumed_credit": 20,
+  "prompt": "rough wooden support frame, two thick vertical timber posts and a crossbeam lashed with rope, like a mine prop, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+  "thumbnail": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b29f7e69-c4a9-4780-ba48-0bbca34a8c32/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjI5ZjdlNjktYzRhOS00NzgwLWJhNDgtMGJiY2EzNGE4YzMyL2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ZPLKUly4xz51RdYj6J-AY8eH5qDgsG0jbhWVNQl5bJuKL4P0GCWCiILdj7caXS7hMa11jxV2lJCJdhb3jE-YgZBESHDgKKwd6sG~BQazeMixHT1DfbEKUpwtBBC9zPGn4lLLbankUegm2Wq9fot3RIdhDyrTqzayEiMD7EerT-w3eGxxy9V2O3a7lDJ2VSCCYEnlCBUXGdx0-ghidV1NKeJHGqoFJfe73pjgKhKsdpqfaWhaUtdQ8xPd2~WbWUEIZri5~jDildUd5JU4lL5Zrd-v53sQ2l1Vjt574YpWr5VPIi0~crYnKm8inO5XZ0j-JFQpDYEWVC5DWwyBIICzkQ__",
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {
+    "pbr_model": {
+      "type": "glb",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b29f7e69-c4a9-4780-ba48-0bbca34a8c32/tripo_pbr_model_b29f7e69-c4a9-4780-ba48-0bbca34a8c32.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjI5ZjdlNjktYzRhOS00NzgwLWJhNDgtMGJiY2EzNGE4YzMyL3RyaXBvX3Bicl9tb2RlbF9iMjlmN2U2OS1jNGE5LTQ3ODAtYmE0OC0wYmJjYTM0YThjMzIuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=BHcvyXh6~OlV42Ru1Q8VRFm-jzcKYaR~ECeQKDVJp3ehTmSNRbSgrPHqU4KKxJWfvo~WCIV27U2oti~U3Rh248zs7RUd54BOTTXAOyMbeN7e~o6Knw2gSzJgiTFOZVrPosnI6IDVeT8j-mlJ601MusUJtT9xtLSncjK~AvFrzbeSTrWlRDvDIQwpSEEgetnL505BAEZZSvT4-V-K~GnCPXpm3~AtKJcwZCtmUs0aNwG~IYgJcSU9GqCm8B8S0Q8Z0b6N78F12vI82kJYitgJg9LcfLxicVhkgvb274-LQZeVeJaXABXnq8qypcIyvoS34f2vsWVtZdhKBeXVLKCOsw__"
+    },
+    "rendered_image": {
+      "type": "webp",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/b29f7e69-c4a9-4780-ba48-0bbca34a8c32/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvYjI5ZjdlNjktYzRhOS00NzgwLWJhNDgtMGJiY2EzNGE4YzMyL2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ZPLKUly4xz51RdYj6J-AY8eH5qDgsG0jbhWVNQl5bJuKL4P0GCWCiILdj7caXS7hMa11jxV2lJCJdhb3jE-YgZBESHDgKKwd6sG~BQazeMixHT1DfbEKUpwtBBC9zPGn4lLLbankUegm2Wq9fot3RIdhDyrTqzayEiMD7EerT-w3eGxxy9V2O3a7lDJ2VSCCYEnlCBUXGdx0-ghidV1NKeJHGqoFJfe73pjgKhKsdpqfaWhaUtdQ8xPd2~WbWUEIZri5~jDildUd5JU4lL5Zrd-v53sQ2l1Vjt574YpWr5VPIi0~crYnKm8inO5XZ0j-JFQpDYEWVC5DWwyBIICzkQ__"
+    }
+  }
+}

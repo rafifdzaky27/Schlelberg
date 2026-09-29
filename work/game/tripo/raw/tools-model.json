@@ -1,0 +1,37 @@
+{
+  "task_id": "5c2f14a2-f0f2-41aa-9078-e4ea881633a5",
+  "type": "text_to_model",
+  "status": "success",
+  "input": {
+    "prompt": "a bronze-headed pick and a wooden spade leaning together, with a coil of rope on the ground, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+    "model_version": "v2.5-20250123",
+    "texture": true,
+    "pbr": true,
+    "texture_alignment": "geometry",
+    "export_uv": true,
+    "face_limit": 6000,
+    "geometry_quality": "standard"
+  },
+  "output": {
+    "pbr_model": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/5c2f14a2-f0f2-41aa-9078-e4ea881633a5/tripo_pbr_model_5c2f14a2-f0f2-41aa-9078-e4ea881633a5.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNWMyZjE0YTItZjBmMi00MWFhLTkwNzgtZTRlYTg4MTYzM2E1L3RyaXBvX3Bicl9tb2RlbF81YzJmMTRhMi1mMGYyLTQxYWEtOTA3OC1lNGVhODgxNjMzYTUuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=WJjKvTtWS5ASVb0sLPPpCvcfr-KfdY3xrPnIe7kBhenN4iYr31POmvckyMDWe76Zxro967DIGJ1LfxpzYc2hiBhLDRGPTAQybPj4jZnM1tlov6ILJBsf5SpIrkwp3JGwQoJggM~TwX2OFEys6AAA4C9LuJnMCIR3yW-Xsmrr8f8inO7xmY5A5USSqtxHNbeC46P3qjRy9KHMOcKyADBlO6KYcPjbN7Ei6dnX8fk6ZYMt-aGjEbnYD8blDAMC6LmCOSHN9u~zVKDyP4ITsXb2BuZZSdLzmoomspKI3l81dJaGdt9e7SfhbdfhqcphFuy1eh3XstHPki7bUdKt5bDMmA__",
+    "generated_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/5c2f14a2-f0f2-41aa-9078-e4ea881633a5/text2image_5c2f14a2-f0f2-41aa-9078-e4ea881633a5.jpeg?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNWMyZjE0YTItZjBmMi00MWFhLTkwNzgtZTRlYTg4MTYzM2E1L3RleHQyaW1hZ2VfNWMyZjE0YTItZjBmMi00MWFhLTkwNzgtZTRlYTg4MTYzM2E1LmpwZWciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=ny6i-5uFqIl52w7nNoYgUT-4ysn4RrdZD~zrEnz3ZAL25rW-eV-D0~vZcTkA8Fpgg1YnO2lMNrz~jXOuvtxDSuLXigx-zLqDISD-TZPhHdlcg-FL8gYOquswk9UQWFCsFh21XrCQWDEcHipUZ0280murLHFBQNK4ZfNru57SZ1aSNwoUsbVFrbXEM6boWqLyqlebYrJN1kf1xxe4SS5fusG4jVvxjVXP0ZNKYER5F8Mfec~1Qm~p8F4RpOS9LsijjEBWvtMmJkIcnYQ6xF4dyMN0Pvaye3iNNlPYlGoKj8IQkcDD5HAYBQJF1q93le28NQHYuHLaL9IjZZ~KPI4c-A__",
+    "rendered_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/5c2f14a2-f0f2-41aa-9078-e4ea881633a5/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNWMyZjE0YTItZjBmMi00MWFhLTkwNzgtZTRlYTg4MTYzM2E1L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=oqUnGJylmyyFslTPMSIsiSz-JDG44kxz4o4wB~gZcxJ9v3C-yeK-vUIZD6RSwdCe3lq70oF68GGJzYzlNNzJr2N0IZIuE9v9cdbXi~JZCy4LDTvFFJhEgSy8GftOAq~6LYb2BZRKPZNn5RRbU~QwLKqPADOJL-AlDgXOKwKmAXoQcffO29IHd1qNEkRyZFRWi5e9LqEiKit2J46w8tfT4GdAudlfHU9CB3mPTr60qhrGAW1mSuOTGAr23CPu5kY~3Cia0MipFmzsnpa3q9ze3LwrYBxyOGjabqbnEo~jGIt0EqVxs2oMcnmHfAUbQC6CsTOEl--YoBSrepgkXF07oQ__"
+  },
+  "progress": 100,
+  "create_time": 1790664579,
+  "consumed_credit": 20,
+  "prompt": "a bronze-headed pick and a wooden spade leaning together, with a coil of rope on the ground, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+  "thumbnail": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/5c2f14a2-f0f2-41aa-9078-e4ea881633a5/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNWMyZjE0YTItZjBmMi00MWFhLTkwNzgtZTRlYTg4MTYzM2E1L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=oqUnGJylmyyFslTPMSIsiSz-JDG44kxz4o4wB~gZcxJ9v3C-yeK-vUIZD6RSwdCe3lq70oF68GGJzYzlNNzJr2N0IZIuE9v9cdbXi~JZCy4LDTvFFJhEgSy8GftOAq~6LYb2BZRKPZNn5RRbU~QwLKqPADOJL-AlDgXOKwKmAXoQcffO29IHd1qNEkRyZFRWi5e9LqEiKit2J46w8tfT4GdAudlfHU9CB3mPTr60qhrGAW1mSuOTGAr23CPu5kY~3Cia0MipFmzsnpa3q9ze3LwrYBxyOGjabqbnEo~jGIt0EqVxs2oMcnmHfAUbQC6CsTOEl--YoBSrepgkXF07oQ__",
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {
+    "pbr_model": {
+      "type": "glb",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/5c2f14a2-f0f2-41aa-9078-e4ea881633a5/tripo_pbr_model_5c2f14a2-f0f2-41aa-9078-e4ea881633a5.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNWMyZjE0YTItZjBmMi00MWFhLTkwNzgtZTRlYTg4MTYzM2E1L3RyaXBvX3Bicl9tb2RlbF81YzJmMTRhMi1mMGYyLTQxYWEtOTA3OC1lNGVhODgxNjMzYTUuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=WJjKvTtWS5ASVb0sLPPpCvcfr-KfdY3xrPnIe7kBhenN4iYr31POmvckyMDWe76Zxro967DIGJ1LfxpzYc2hiBhLDRGPTAQybPj4jZnM1tlov6ILJBsf5SpIrkwp3JGwQoJggM~TwX2OFEys6AAA4C9LuJnMCIR3yW-Xsmrr8f8inO7xmY5A5USSqtxHNbeC46P3qjRy9KHMOcKyADBlO6KYcPjbN7Ei6dnX8fk6ZYMt-aGjEbnYD8blDAMC6LmCOSHN9u~zVKDyP4ITsXb2BuZZSdLzmoomspKI3l81dJaGdt9e7SfhbdfhqcphFuy1eh3XstHPki7bUdKt5bDMmA__"
+    },
+    "rendered_image": {
+      "type": "webp",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/5c2f14a2-f0f2-41aa-9078-e4ea881633a5/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNWMyZjE0YTItZjBmMi00MWFhLTkwNzgtZTRlYTg4MTYzM2E1L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=oqUnGJylmyyFslTPMSIsiSz-JDG44kxz4o4wB~gZcxJ9v3C-yeK-vUIZD6RSwdCe3lq70oF68GGJzYzlNNzJr2N0IZIuE9v9cdbXi~JZCy4LDTvFFJhEgSy8GftOAq~6LYb2BZRKPZNn5RRbU~QwLKqPADOJL-AlDgXOKwKmAXoQcffO29IHd1qNEkRyZFRWi5e9LqEiKit2J46w8tfT4GdAudlfHU9CB3mPTr60qhrGAW1mSuOTGAr23CPu5kY~3Cia0MipFmzsnpa3q9ze3LwrYBxyOGjabqbnEo~jGIt0EqVxs2oMcnmHfAUbQC6CsTOEl--YoBSrepgkXF07oQ__"
+    }
+  }
+}

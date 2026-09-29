@@ -1,0 +1,37 @@
+{
+  "task_id": "41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9",
+  "type": "text_to_model",
+  "status": "success",
+  "input": {
+    "prompt": "round woven wicker basket half full of wet dark mud and broken stones, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+    "model_version": "v2.5-20250123",
+    "texture": true,
+    "pbr": true,
+    "texture_alignment": "geometry",
+    "export_uv": true,
+    "face_limit": 6000,
+    "geometry_quality": "standard"
+  },
+  "output": {
+    "pbr_model": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9/tripo_pbr_model_41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNDE5MDFmNDItN2RkYi00ZWNkLWE2YWMtOGU3ZTJhYzRlNmM5L3RyaXBvX3Bicl9tb2RlbF80MTkwMWY0Mi03ZGRiLTRlY2QtYTZhYy04ZTdlMmFjNGU2YzkuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=hcArtMmJT4Bj-3ACcFhBh1o5stCruKU~hYw0rc~RrcMEHPebMMHKrocGpywTQhk0260xWRBGGDdZA3-mj~VqBFzoI7Vk0BTTkhAev-46KIh98THq7Hf6mE2KYQ-18bMUaGXJrIK5ERBR99ROeJvXULq8Bz4YlBHSpZX1C7Avhzi~M1HDrNJagxEGI55ENVGeoZxJqLtwaT25Vs8AMHWRbwCi5pX6Ho6EIZm54rhh-1~bFM-TC-QhgSu3YLeb6TpeB6NDpUfoNrtJs8WXBhoXIgRtbtVVCFA92tToQF1-0vqjFyNedF~2Eibv7mjj7nbFqEy4E2NkTxAd6P6dgeDrxg__",
+    "generated_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9/text2image_41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9.jpeg?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNDE5MDFmNDItN2RkYi00ZWNkLWE2YWMtOGU3ZTJhYzRlNmM5L3RleHQyaW1hZ2VfNDE5MDFmNDItN2RkYi00ZWNkLWE2YWMtOGU3ZTJhYzRlNmM5LmpwZWciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=pk7lxSX9G0D2~f1AP8SAi~DTsucb1Tc1HL8J2dB2kG6S92I46Ru-Urk1GOZJGWMr6il~Bm3p87apI-uJiscLHSbf2opKvZdV0q0HYUz28WDYJd2P3GD0j9WDfa2vKKRYnB4HBKxpB9j~eIalDsh303QRI-dQcxogEAcSQ4588~3NqYPFxHS6XdYMckL3v5dT6F7Pxj4t-mo6p6oTplYhJ1N7A5bDOVKrywsVnVaUaxxCrdHZDx9OeBQZ1V42dqTUiEJs6GeZJ9oqn4yRIu~kBCTbLHdJAir~nXQl~RpOVB3uA3wTZRcR-Fa-~d-pMqsiL3C8TjRYBAz2Uu2gktCISw__",
+    "rendered_image": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNDE5MDFmNDItN2RkYi00ZWNkLWE2YWMtOGU3ZTJhYzRlNmM5L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=K8WtCVXhThFqgiYKlGD-Y65KhVKXxultGC0nwDzD11kVoadbbiUxpRRDWKZiPz9gMwa0SWK9dN441o0l5bln9M7pxEAp8u3FVtVbDWAn6rTwUXRhH8LHal9qAzfYP1EsyDVay56Q1R5KT6Ex7HntoGWehdSyfwuloyg9ayycgQMiP-Nk-PLd74tZw4yhFK5YYHFWCBr-lxNd5Vbxs8PbQWqoQRplFDzIQ8P3ucQXw9GJ8341k3~pQ0yixjmU0DcPP9ayKUtM-iSOmzA11cgui5m4sDtwa3gS7kgI9UvPhA4kNj2IS7iL8XFOlhXqRWs26y92Y2a2UNeftS6aO1CFxg__"
+  },
+  "progress": 100,
+  "create_time": 1790664573,
+  "consumed_credit": 20,
+  "prompt": "round woven wicker basket half full of wet dark mud and broken stones, stylized hand-painted game asset, soft painterly textures, Bronze Age Mediterranean, clean silhouette",
+  "thumbnail": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNDE5MDFmNDItN2RkYi00ZWNkLWE2YWMtOGU3ZTJhYzRlNmM5L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=K8WtCVXhThFqgiYKlGD-Y65KhVKXxultGC0nwDzD11kVoadbbiUxpRRDWKZiPz9gMwa0SWK9dN441o0l5bln9M7pxEAp8u3FVtVbDWAn6rTwUXRhH8LHal9qAzfYP1EsyDVay56Q1R5KT6Ex7HntoGWehdSyfwuloyg9ayycgQMiP-Nk-PLd74tZw4yhFK5YYHFWCBr-lxNd5Vbxs8PbQWqoQRplFDzIQ8P3ucQXw9GJ8341k3~pQ0yixjmU0DcPP9ayKUtM-iSOmzA11cgui5m4sDtwa3gS7kgI9UvPhA4kNj2IS7iL8XFOlhXqRWs26y92Y2a2UNeftS6aO1CFxg__",
+  "queuing_num": -1,
+  "running_left_time": -1,
+  "result": {
+    "pbr_model": {
+      "type": "glb",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9/tripo_pbr_model_41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9.glb?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNDE5MDFmNDItN2RkYi00ZWNkLWE2YWMtOGU3ZTJhYzRlNmM5L3RyaXBvX3Bicl9tb2RlbF80MTkwMWY0Mi03ZGRiLTRlY2QtYTZhYy04ZTdlMmFjNGU2YzkuZ2xiIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzkwNzI2NDAwfX19XX0_&Signature=hcArtMmJT4Bj-3ACcFhBh1o5stCruKU~hYw0rc~RrcMEHPebMMHKrocGpywTQhk0260xWRBGGDdZA3-mj~VqBFzoI7Vk0BTTkhAev-46KIh98THq7Hf6mE2KYQ-18bMUaGXJrIK5ERBR99ROeJvXULq8Bz4YlBHSpZX1C7Avhzi~M1HDrNJagxEGI55ENVGeoZxJqLtwaT25Vs8AMHWRbwCi5pX6Ho6EIZm54rhh-1~bFM-TC-QhgSu3YLeb6TpeB6NDpUfoNrtJs8WXBhoXIgRtbtVVCFA92tToQF1-0vqjFyNedF~2Eibv7mjj7nbFqEy4E2NkTxAd6P6dgeDrxg__"
+    },
+    "rendered_image": {
+      "type": "webp",
+      "url": "https://tripo-data.rg1.data.tripo3d.com/tcli_4a64ab3ac94a41869c30d145a909a58f/20260929/41901f42-7ddb-4ecd-a6ac-8e7e2ac4e6c9/legacy_mesh.webp?Key-Pair-Id=K1676C64NMVM2J&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly90cmlwby1kYXRhLnJnMS5kYXRhLnRyaXBvM2QuY29tL3RjbGlfNGE2NGFiM2FjOTRhNDE4NjljMzBkMTQ1YTkwOWE1OGYvMjAyNjA5MjkvNDE5MDFmNDItN2RkYi00ZWNkLWE2YWMtOGU3ZTJhYzRlNmM5L2xlZ2FjeV9tZXNoLndlYnAiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3OTA3MjY0MDB9fX1dfQ__&Signature=K8WtCVXhThFqgiYKlGD-Y65KhVKXxultGC0nwDzD11kVoadbbiUxpRRDWKZiPz9gMwa0SWK9dN441o0l5bln9M7pxEAp8u3FVtVbDWAn6rTwUXRhH8LHal9qAzfYP1EsyDVay56Q1R5KT6Ex7HntoGWehdSyfwuloyg9ayycgQMiP-Nk-PLd74tZw4yhFK5YYHFWCBr-lxNd5Vbxs8PbQWqoQRplFDzIQ8P3ucQXw9GJ8341k3~pQ0yixjmU0DcPP9ayKUtM-iSOmzA11cgui5m4sDtwa3gS7kgI9UvPhA4kNj2IS7iL8XFOlhXqRWs26y92Y2a2UNeftS6aO1CFxg__"
+    }
+  }
+}
